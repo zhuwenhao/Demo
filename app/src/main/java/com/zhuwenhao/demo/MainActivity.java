@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +24,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+
+    @BindView(R.id.layout_welcome)
+    View layoutWelcome;
+
+    private static boolean isShowWelcome = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        if (isShowWelcome) {
+            layoutWelcome.setVisibility(View.VISIBLE);
+            layoutWelcome.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    layoutWelcome.setVisibility(View.GONE);
+                    isShowWelcome = false;
+                }
+            }, 2333);
+        }
     }
 
     @Override
@@ -57,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
+        } else if (!isShowWelcome) {
             super.onBackPressed();
         }
     }
