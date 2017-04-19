@@ -5,6 +5,7 @@
 
         <item
             android:id="@+id/nav_drop_down_menu"
+            android:icon="@drawable/ic_menu"
             android:title="@string/drop_down_menu" />
     </group>
 </menu>
