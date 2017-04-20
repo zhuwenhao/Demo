@@ -89,6 +89,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentList.add(new Fragment2());
         fragmentList.add(new Fragment3());
 
+        viewPager.setOffscreenPageLimit(2);
+
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragmentList, titles);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -113,6 +115,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.nav_bandwagon:
+                startActivity(new Intent(this, BandwagonActivity.class));
+                break;
             case R.id.nav_drop_down_menu:
 
                 break;

@@ -5,7 +5,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="888dp"
-        android:background="@android:color/white"
-        android:orientation="vertical" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="888dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="233dp"
+            android:background="@color/colorDivider" />
+    </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

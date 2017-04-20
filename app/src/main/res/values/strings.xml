@@ -6,6 +6,7 @@
 
     <string name="email">zhuwenhaox@gmail.com</string>
 
+    <string name="bandwagon">Bandwagon</string>
     <string name="drop_down_menu">DropDownMenu</string>
     <string name="multiple_status_view">MultipleStatusView</string>
 
