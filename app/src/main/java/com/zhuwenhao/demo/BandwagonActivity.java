@@ -3,12 +3,16 @@ package com.zhuwenhao.demo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.zhuwenhao.demo.adapter.BandwagonAdapter;
 import com.zhuwenhao.demo.entity.Bandwagon;
@@ -22,6 +26,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwipedListener {
 
@@ -67,6 +72,41 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
 
         ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelperCallback(this));
         helper.attachToRecyclerView(recyclerView);
+    }
+
+    @OnClick(R.id.fab_add)
+    public void onViewClicked(View view) {
+        Snackbar snackbar = Snackbar.make(view, "Click", Snackbar.LENGTH_LONG).setAction("done", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        }).addCallback(new Snackbar.Callback() {
+            @Override
+            public void onDismissed(Snackbar transientBottomBar, int event) {
+                super.onDismissed(transientBottomBar, event);
+                switch (event) {
+                    case Snackbar.Callback.DISMISS_EVENT_ACTION:
+                        Toast.makeText(BandwagonActivity.this, "通过Action的点击事件退出", Toast.LENGTH_SHORT).show();
+                        break;
+                    case Snackbar.Callback.DISMISS_EVENT_CONSECUTIVE:
+                        Toast.makeText(BandwagonActivity.this, "由于新的Snackbar显示而退出", Toast.LENGTH_SHORT).show();
+                        break;
+                    case Snackbar.Callback.DISMISS_EVENT_MANUAL:
+                        Toast.makeText(BandwagonActivity.this, "通过调用dismiss()方法退出", Toast.LENGTH_SHORT).show();
+                        break;
+                    case Snackbar.Callback.DISMISS_EVENT_SWIPE:
+                        Toast.makeText(BandwagonActivity.this, "右滑退出", Toast.LENGTH_SHORT).show();
+                        break;
+                    case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
+                        Toast.makeText(BandwagonActivity.this, "自然退出", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
+        Button action = (Button) snackbar.getView().findViewById(android.support.design.R.id.snackbar_action);
+        action.setAllCaps(false);
+        snackbar.show();
     }
 
     @Override
