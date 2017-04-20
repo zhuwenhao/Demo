@@ -1,5 +1,6 @@
 package com.zhuwenhao.demo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -114,6 +115,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.nav_drop_down_menu:
 
+                break;
+            case R.id.nav_multiple_status_view:
+                startActivity(new Intent(this, MultipleStatusViewActivity.class));
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
