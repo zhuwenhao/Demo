@@ -2,14 +2,40 @@ package com.zhuwenhao.demo.entity;
 
 public class Bandwagon {
 
+    private Integer id;
+
     private String title;
 
-    private String ipAddresses;
+    private String veId;
+
+    private String apiKey;
+
+    private String hostname;
 
     private String nodeLocation;
 
-    public Bandwagon(String title) {
+    private String os;
+
+    private String ipAddresses;
+
+    private Integer sort;
+
+    public Bandwagon() {
+    }
+
+    public Bandwagon(String title, String veId, String apiKey, Integer sort) {
         this.title = title;
+        this.veId = veId;
+        this.apiKey = apiKey;
+        this.sort = sort;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -20,12 +46,28 @@ public class Bandwagon {
         this.title = title;
     }
 
-    public String getIpAddresses() {
-        return ipAddresses;
+    public String getVeId() {
+        return veId;
     }
 
-    public void setIpAddresses(String ipAddresses) {
-        this.ipAddresses = ipAddresses;
+    public void setVeId(String veId) {
+        this.veId = veId;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
+    }
+
+    public String getHostname() {
+        return hostname;
+    }
+
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
     }
 
     public String getNodeLocation() {
@@ -34,5 +76,29 @@ public class Bandwagon {
 
     public void setNodeLocation(String nodeLocation) {
         this.nodeLocation = nodeLocation;
+    }
+
+    public String getOs() {
+        return os;
+    }
+
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    public String getIpAddresses() {
+        return ipAddresses;
+    }
+
+    public void setIpAddresses(String ipAddresses) {
+        this.ipAddresses = ipAddresses;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 }

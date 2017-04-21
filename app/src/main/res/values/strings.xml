@@ -17,4 +17,8 @@
     <string name="show_empty_view">显示空视图</string>
     <string name="show_error_view">显示错误视图</string>
     <string name="show_no_network_view">显示网络异常视图</string>
+
+    <string name="title">标题</string>
+    <string name="ve_id">VEID</string>
+    <string name="api_key">API KEY</string>
 </resources>
