@@ -23,11 +23,10 @@ public class Bandwagon {
     public Bandwagon() {
     }
 
-    public Bandwagon(String title, String veId, String apiKey, Integer sort) {
+    public Bandwagon(String title, String veId, String apiKey) {
         this.title = title;
         this.veId = veId;
         this.apiKey = apiKey;
-        this.sort = sort;
     }
 
     public Integer getId() {

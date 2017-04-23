@@ -57,10 +57,58 @@ public class DatabaseUtils {
         values.put("title", bandwagon.getTitle());
         values.put("ve_id", bandwagon.getVeId());
         values.put("api_key", bandwagon.getApiKey());
-        values.put("sort", bandwagon.getSort());
+        values.put("sort", getLastSort(context));
         long id = db.insert(DatabaseHelper.TABLE_BANDWAGON, null, values);
 
         db.close();
         return id != -1;
+    }
+
+    /**
+     * 获取最后一个Sort
+     *
+     * @param context context
+     * @return int
+     */
+    private static int getLastSort(Context context) {
+        int sort = 0;
+        DatabaseHelper helper = new DatabaseHelper(context, DatabaseHelper.DATABASE_NAME, null, DatabaseHelper.VERSION);
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor = db.query(DatabaseHelper.TABLE_BANDWAGON, new String[]{"sort"}, null, null, null, null, "sort desc", "1");
+        if (cursor.moveToNext()) {
+            sort = cursor.getInt(cursor.getColumnIndex("sort")) + 1;
+        }
+        cursor.close();
+        db.close();
+        return sort;
+    }
+
+    /**
+     * 删除搬瓦工主机
+     *
+     * @param context context
+     * @param id      id
+     * @return boolean
+     */
+    public static boolean deleteBandwagon(Context context, int id) {
+        DatabaseHelper helper = new DatabaseHelper(context, DatabaseHelper.DATABASE_NAME, null, DatabaseHelper.VERSION);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        int number = db.delete(DatabaseHelper.TABLE_BANDWAGON, "id=?", new String[]{String.valueOf(id)});
+
+        db.close();
+        return number != 0;
+    }
+
+    public static void updateSort(Context context, int id, int sort, int id1, int sort1) {
+        DatabaseHelper helper = new DatabaseHelper(context, DatabaseHelper.DATABASE_NAME, null, DatabaseHelper.VERSION);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("sort", sort1);
+        db.update(DatabaseHelper.TABLE_BANDWAGON, values, "id=?", new String[]{String.valueOf(id)});
+
+        values.put("sort", sort);
+        db.update(DatabaseHelper.TABLE_BANDWAGON, values, "id=?", new String[]{String.valueOf(id1)});
+
+        db.close();
     }
 }

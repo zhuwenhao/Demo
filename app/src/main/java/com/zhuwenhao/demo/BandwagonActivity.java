@@ -108,7 +108,7 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        if (DatabaseUtils.addBandwagon(context, new Bandwagon(textTitle.getText().toString(), textVeId.getText().toString(), textApiKey.getText().toString(), bandwagonList.size()))) {
+                        if (DatabaseUtils.addBandwagon(context, new Bandwagon(textTitle.getText().toString(), textVeId.getText().toString(), textApiKey.getText().toString()))) {
                             bandwagonList.clear();
                             for (Bandwagon bandwagon : DatabaseUtils.getBandwagonList(context)) {
                                 bandwagonList.add(bandwagon);
@@ -134,6 +134,7 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
 
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
+        DatabaseUtils.updateSort(this, bandwagonList.get(fromPosition).getId(), bandwagonList.get(fromPosition).getSort(), bandwagonList.get(toPosition).getId(), bandwagonList.get(toPosition).getSort());
         Collections.swap(bandwagonList, fromPosition, toPosition);
         adapter.notifyItemMoved(fromPosition, toPosition);
     }
