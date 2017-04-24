@@ -99,14 +99,23 @@ public class DatabaseUtils {
         return number != 0;
     }
 
+    /**
+     * 更新排序
+     *
+     * @param context context
+     * @param id      id
+     * @param sort    sort
+     * @param id1     id1
+     * @param sort1   sort1
+     */
     public static void updateSort(Context context, int id, int sort, int id1, int sort1) {
         DatabaseHelper helper = new DatabaseHelper(context, DatabaseHelper.DATABASE_NAME, null, DatabaseHelper.VERSION);
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("sort", sort1);
+        values.put("sort", sort);
         db.update(DatabaseHelper.TABLE_BANDWAGON, values, "id=?", new String[]{String.valueOf(id)});
 
-        values.put("sort", sort);
+        values.put("sort", sort1);
         db.update(DatabaseHelper.TABLE_BANDWAGON, values, "id=?", new String[]{String.valueOf(id1)});
 
         db.close();

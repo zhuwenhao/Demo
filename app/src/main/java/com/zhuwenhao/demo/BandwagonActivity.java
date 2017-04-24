@@ -134,7 +134,12 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
 
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
-        DatabaseUtils.updateSort(this, bandwagonList.get(fromPosition).getId(), bandwagonList.get(fromPosition).getSort(), bandwagonList.get(toPosition).getId(), bandwagonList.get(toPosition).getSort());
+        DatabaseUtils.updateSort(this, bandwagonList.get(fromPosition).getId(), bandwagonList.get(toPosition).getSort(), bandwagonList.get(toPosition).getId(), bandwagonList.get(fromPosition).getSort());
+
+        int fromSort = bandwagonList.get(fromPosition).getSort();
+        bandwagonList.get(fromPosition).setSort(bandwagonList.get(toPosition).getSort());
+        bandwagonList.get(toPosition).setSort(fromSort);
+
         Collections.swap(bandwagonList, fromPosition, toPosition);
         adapter.notifyItemMoved(fromPosition, toPosition);
     }
