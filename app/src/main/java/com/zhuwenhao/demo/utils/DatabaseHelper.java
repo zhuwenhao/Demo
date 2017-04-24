@@ -18,7 +18,7 @@ class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "create table " + TABLE_BANDWAGON + "(id integer primary key autoincrement, title varchar(100), ve_id varchar(100), api_key varchar(100), hostname varchar(100), node_location varchar(100), os varchar(100), ip_addresses varchar(100), sort integer)";
+        String sql = "create table " + TABLE_BANDWAGON + "(id integer primary key autoincrement, title varchar(100), ve_id varchar(100), api_key varchar(100), node_location varchar(100), os varchar(100), ip_addresses varchar(100), sort integer)";
         db.execSQL(sql);
     }
 

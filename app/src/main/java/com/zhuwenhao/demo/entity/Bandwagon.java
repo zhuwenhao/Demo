@@ -10,8 +10,6 @@ public class Bandwagon {
 
     private String apiKey;
 
-    private String hostname;
-
     private String nodeLocation;
 
     private String os;
@@ -26,6 +24,13 @@ public class Bandwagon {
     }
 
     public Bandwagon(String title, String veId, String apiKey) {
+        this.title = title;
+        this.veId = veId;
+        this.apiKey = apiKey;
+    }
+
+    public Bandwagon(int id, String title, String veId, String apiKey) {
+        this.id = id;
         this.title = title;
         this.veId = veId;
         this.apiKey = apiKey;
@@ -61,14 +66,6 @@ public class Bandwagon {
 
     public void setApiKey(String apiKey) {
         this.apiKey = apiKey;
-    }
-
-    public String getHostname() {
-        return hostname;
-    }
-
-    public void setHostname(String hostname) {
-        this.hostname = hostname;
     }
 
     public String getNodeLocation() {

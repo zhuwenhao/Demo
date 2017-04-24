@@ -24,8 +24,8 @@ import com.github.magiepooh.recycleritemdecoration.ItemDecorations;
 import com.zhuwenhao.demo.adapter.BandwagonAdapter;
 import com.zhuwenhao.demo.entity.Bandwagon;
 import com.zhuwenhao.demo.listener.OnItemClickListener;
+import com.zhuwenhao.demo.listener.OnItemEditClickListener;
 import com.zhuwenhao.demo.listener.OnMoveAndSwipedListener;
-import com.zhuwenhao.demo.utils.AppUtils;
 import com.zhuwenhao.demo.utils.DatabaseUtils;
 import com.zhuwenhao.demo.utils.ItemTouchHelperCallback;
 
@@ -95,6 +95,12 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
                 startActivity(intent);
             }
         });
+        adapter.setOnItemEditClickListener(new OnItemEditClickListener() {
+            @Override
+            public void onItemEditClick(int position) {
+                showDialog(true, position);
+            }
+        });
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(itemDecoration);
         recyclerView.setAdapter(adapter);
@@ -119,36 +125,47 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
 
     @OnClick(R.id.fab_add)
     public void onViewClicked(View view) {
+        showDialog(false, -1);
+    }
+
+    private void showDialog(final boolean isEdit, final int position) {
         MaterialDialog dialog = new MaterialDialog.Builder(this)
-                .title("添加主机")
+                .title(isEdit ? "编辑主机" : "添加主机")
                 .customView(R.layout.dialog_bandwagon_add, true)
                 .positiveText("确定")
                 .negativeText("取消")
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        if (DatabaseUtils.addBandwagon(context, new Bandwagon(textTitle.getText().toString(), textVeId.getText().toString(), textApiKey.getText().toString()))) {
-                            bandwagonList.clear();
-                            for (Bandwagon bandwagon : DatabaseUtils.getBandwagonList(context)) {
-                                bandwagonList.add(bandwagon);
-                            }
-                            updatePosition();
-                            adapter.notifyDataSetChanged();
+                        if (isEdit) {
+                            DatabaseUtils.updateBandwagon(context, new Bandwagon(bandwagonList.get(position).getId(), textTitle.getText().toString(), textVeId.getText().toString(), textApiKey.getText().toString()));
                         } else {
-                            AppUtils.showToast(context, "添加失败");
+                            DatabaseUtils.addBandwagon(context, new Bandwagon(textTitle.getText().toString(), textVeId.getText().toString(), textApiKey.getText().toString()));
                         }
+                        bandwagonList.clear();
+                        for (Bandwagon bandwagon : DatabaseUtils.getBandwagonList(context)) {
+                            bandwagonList.add(bandwagon);
+                        }
+                        updatePosition();
+                        adapter.notifyDataSetChanged();
                     }
                 }).build();
 
         positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
-        textTitle = (AutoCompleteTextView) dialog.getCustomView().findViewById(R.id.dialog_text_title);
+        if (dialog.getCustomView() != null) //Disable inspection
+            textTitle = (AutoCompleteTextView) dialog.getCustomView().findViewById(R.id.dialog_text_title);
         textTitle.addTextChangedListener(this);
         textVeId = (AutoCompleteTextView) dialog.getCustomView().findViewById(R.id.dialog_text_ve_id);
         textVeId.addTextChangedListener(this);
         textApiKey = (AutoCompleteTextView) dialog.getCustomView().findViewById(R.id.dialog_text_api_key);
         textApiKey.addTextChangedListener(this);
+        if (isEdit) {
+            textTitle.setText(bandwagonList.get(position).getTitle());
+            textVeId.setText(bandwagonList.get(position).getVeId());
+            textApiKey.setText(bandwagonList.get(position).getApiKey());
+        }
         dialog.show();
-        positiveAction.setEnabled(false);
+        positiveAction.setEnabled(isEdit);
     }
 
     @Override
