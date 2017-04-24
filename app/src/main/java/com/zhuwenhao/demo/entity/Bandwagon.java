@@ -20,6 +20,8 @@ public class Bandwagon {
 
     private Integer sort;
 
+    private Integer position;
+
     public Bandwagon() {
     }
 
@@ -99,5 +101,13 @@ public class Bandwagon {
 
     public void setSort(Integer sort) {
         this.sort = sort;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
     }
 }

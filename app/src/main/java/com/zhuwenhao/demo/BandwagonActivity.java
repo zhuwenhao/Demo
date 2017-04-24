@@ -16,7 +16,6 @@ import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -32,6 +31,7 @@ import com.zhuwenhao.demo.utils.ItemTouchHelperCallback;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -63,6 +63,10 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
 
     private List<Bandwagon> bandwagonList = new ArrayList<>();
 
+    private List<Bandwagon> deleteList = new ArrayList<>();
+
+    private Snackbar snackbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +81,7 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
         context = BandwagonActivity.this;
 
         bandwagonList = DatabaseUtils.getBandwagonList(this);
+        updatePosition();
 
         RecyclerView.ItemDecoration itemDecoration = ItemDecorations.vertical(this)
                 .last(R.drawable.item_decoration_h_8)
@@ -98,6 +103,20 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
         helper.attachToRecyclerView(recyclerView);
     }
 
+    private void deleteBandwagon() {
+        for (Bandwagon bandwagon : deleteList) {
+            DatabaseUtils.deleteBandwagon(this, bandwagon.getId());
+        }
+        deleteList.clear();
+        updatePosition();
+    }
+
+    private void updatePosition() {
+        for (int i = 0; i < bandwagonList.size(); i++) {
+            bandwagonList.get(i).setPosition(i);
+        }
+    }
+
     @OnClick(R.id.fab_add)
     public void onViewClicked(View view) {
         MaterialDialog dialog = new MaterialDialog.Builder(this)
@@ -113,8 +132,8 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
                             for (Bandwagon bandwagon : DatabaseUtils.getBandwagonList(context)) {
                                 bandwagonList.add(bandwagon);
                             }
+                            updatePosition();
                             adapter.notifyDataSetChanged();
-                            AppUtils.showToast(context, "添加成功");
                         } else {
                             AppUtils.showToast(context, "添加失败");
                         }
@@ -134,6 +153,9 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
 
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
+        if (snackbar != null) {
+            snackbar.dismiss();
+        }
         DatabaseUtils.updateSort(this, bandwagonList.get(fromPosition).getId(), bandwagonList.get(toPosition).getSort(), bandwagonList.get(toPosition).getId(), bandwagonList.get(fromPosition).getSort());
 
         int fromSort = bandwagonList.get(fromPosition).getSort();
@@ -141,17 +163,31 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
         bandwagonList.get(toPosition).setSort(fromSort);
 
         Collections.swap(bandwagonList, fromPosition, toPosition);
+        updatePosition();
         adapter.notifyItemMoved(fromPosition, toPosition);
     }
 
     @Override
     public void onItemSwiped(int position) {
+        deleteList.add(bandwagonList.get(position));
+
         bandwagonList.remove(position);
         adapter.notifyItemRemoved(position);
-        Snackbar.make(fabAdd, "Click", Snackbar.LENGTH_LONG).setAction("done", new View.OnClickListener() {
+        snackbar = Snackbar.make(fabAdd, "已删除 " + deleteList.size() + " 项", Snackbar.LENGTH_LONG).setAction("撤销", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //排序
+                Collections.sort(deleteList, new Comparator<Bandwagon>() {
+                    @Override
+                    public int compare(Bandwagon b1, Bandwagon b2) {
+                        return b1.getPosition().compareTo(b2.getPosition());
+                    }
+                });
+                for (int i = 0; i < deleteList.size(); i++) {
+                    bandwagonList.add(deleteList.get(i).getPosition(), deleteList.get(i));
+                    adapter.notifyItemInserted(deleteList.get(i).getPosition());
+                }
+                deleteList.clear();
             }
         }).addCallback(new Snackbar.Callback() {
             @Override
@@ -159,17 +195,18 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
                 super.onDismissed(transientBottomBar, event);
                 switch (event) {
                     case Snackbar.Callback.DISMISS_EVENT_MANUAL:
-                        Toast.makeText(BandwagonActivity.this, "通过调用dismiss()方法退出", Toast.LENGTH_SHORT).show();
+                        deleteBandwagon();
                         break;
                     case Snackbar.Callback.DISMISS_EVENT_SWIPE:
-                        Toast.makeText(BandwagonActivity.this, "右滑退出", Toast.LENGTH_SHORT).show();
+                        deleteBandwagon();
                         break;
                     case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
-                        Toast.makeText(BandwagonActivity.this, "自然退出", Toast.LENGTH_SHORT).show();
+                        deleteBandwagon();
                         break;
                 }
             }
-        }).show();
+        });
+        snackbar.show();
     }
 
     @Override

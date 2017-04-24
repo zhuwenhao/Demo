@@ -48,6 +48,7 @@ public class DatabaseUtils {
      *
      * @param context   context
      * @param bandwagon bandwagon
+     * @return boolean
      */
     public static boolean addBandwagon(Context context, Bandwagon bandwagon) {
         DatabaseHelper helper = new DatabaseHelper(context, DatabaseHelper.DATABASE_NAME, null, DatabaseHelper.VERSION);
