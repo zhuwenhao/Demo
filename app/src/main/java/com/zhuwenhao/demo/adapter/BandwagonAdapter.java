@@ -52,8 +52,8 @@ public class BandwagonAdapter extends RecyclerView.Adapter<BandwagonAdapter.Band
             });
         }
         holder.textNodeLocation.setText(bandwagonList.get(position).getNodeLocation());
-        holder.textIpAddresses.setText(bandwagonList.get(position).getIpAddresses());
         holder.textOs.setText(bandwagonList.get(position).getOs());
+        holder.textIpAddresses.setText(bandwagonList.get(position).getIpAddresses());
     }
 
     @Override
@@ -71,9 +71,9 @@ public class BandwagonAdapter extends RecyclerView.Adapter<BandwagonAdapter.Band
 
         TextView textNodeLocation;
 
-        TextView textIpAddresses;
-
         TextView textOs;
+
+        TextView textIpAddresses;
 
         BandwagonViewHolder(View itemView) {
             super(itemView);
@@ -81,8 +81,8 @@ public class BandwagonAdapter extends RecyclerView.Adapter<BandwagonAdapter.Band
             textTitle = (TextView) itemView.findViewById(R.id.text_title);
             edit = (AppCompatImageView) itemView.findViewById(R.id.edit);
             textNodeLocation = (TextView) itemView.findViewById(R.id.text_node_location);
-            textIpAddresses = (TextView) itemView.findViewById(R.id.text_ip_addresses);
             textOs = (TextView) itemView.findViewById(R.id.text_os);
+            textIpAddresses = (TextView) itemView.findViewById(R.id.text_ip_addresses);
         }
     }
 

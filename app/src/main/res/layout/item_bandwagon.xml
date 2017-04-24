@@ -58,7 +58,7 @@
                 android:textColor="?android:attr/textColorSecondary" />
 
             <TextView
-                android:id="@+id/text_ip_addresses"
+                android:id="@+id/text_os"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -68,7 +68,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/text_os"
+            android:id="@+id/text_ip_addresses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
