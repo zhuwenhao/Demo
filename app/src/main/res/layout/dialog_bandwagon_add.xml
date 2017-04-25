@@ -15,6 +15,7 @@
             android:hint="@string/title"
             android:imeOptions="actionNext"
             android:inputType="text"
+            android:maxLength="50"
             android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 
@@ -30,6 +31,7 @@
             android:hint="@string/ve_id"
             android:imeOptions="actionNext"
             android:inputType="text"
+            android:maxLength="100"
             android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 
@@ -45,6 +47,7 @@
             android:hint="@string/api_key"
             android:imeOptions="actionDone"
             android:inputType="text"
+            android:maxLength="100"
             android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 </LinearLayout>

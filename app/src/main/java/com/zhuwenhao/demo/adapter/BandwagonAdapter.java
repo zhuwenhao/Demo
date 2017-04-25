@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zhuwenhao.demo.R;
@@ -51,9 +52,14 @@ public class BandwagonAdapter extends RecyclerView.Adapter<BandwagonAdapter.Band
                 }
             });
         }
-        holder.textNodeLocation.setText(bandwagonList.get(position).getNodeLocation());
-        holder.textOs.setText(bandwagonList.get(position).getOs());
-        holder.textIpAddresses.setText(bandwagonList.get(position).getIpAddresses());
+        if (bandwagonList.get(position).getNodeLocation() == null || bandwagonList.get(position).getNodeLocation().isEmpty()) {
+            holder.layoutText.setVisibility(View.GONE);
+        } else {
+            holder.layoutText.setVisibility(View.VISIBLE);
+            holder.textNodeLocation.setText(bandwagonList.get(position).getNodeLocation());
+            holder.textOs.setText(bandwagonList.get(position).getOs());
+            holder.textIpAddresses.setText(bandwagonList.get(position).getIpAddresses());
+        }
     }
 
     @Override
@@ -69,6 +75,8 @@ public class BandwagonAdapter extends RecyclerView.Adapter<BandwagonAdapter.Band
 
         AppCompatImageView edit;
 
+        LinearLayout layoutText;
+
         TextView textNodeLocation;
 
         TextView textOs;
@@ -80,6 +88,7 @@ public class BandwagonAdapter extends RecyclerView.Adapter<BandwagonAdapter.Band
             view = itemView;
             textTitle = (TextView) itemView.findViewById(R.id.text_title);
             edit = (AppCompatImageView) itemView.findViewById(R.id.edit);
+            layoutText = (LinearLayout) itemView.findViewById(R.id.layout_text);
             textNodeLocation = (TextView) itemView.findViewById(R.id.text_node_location);
             textOs = (TextView) itemView.findViewById(R.id.text_os);
             textIpAddresses = (TextView) itemView.findViewById(R.id.text_ip_addresses);

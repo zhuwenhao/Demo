@@ -2,6 +2,7 @@ package com.zhuwenhao.demo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -132,8 +133,17 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
         MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title(isEdit ? "编辑主机" : "添加主机")
                 .customView(R.layout.dialog_bandwagon_add, true)
+                .neutralText("查看我的主机")
                 .positiveText("确定")
                 .negativeText("取消")
+                .onNeutral(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("https://kiwivm.64clouds.com/"));
+                        startActivity(intent);
+                    }
+                })
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
