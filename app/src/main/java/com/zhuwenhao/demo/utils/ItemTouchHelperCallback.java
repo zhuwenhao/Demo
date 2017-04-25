@@ -1,7 +1,8 @@
 package com.zhuwenhao.demo.utils;
 
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
 import com.zhuwenhao.demo.listener.OnMoveAndSwipedListener;
@@ -16,12 +17,12 @@ public class ItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-        if (recyclerView.getLayoutManager() instanceof LinearLayoutManager) {
-            //单列的RecyclerView支持上下拖动和左右华东
-            return makeMovementFlags(ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.START | ItemTouchHelper.END);
-        } else {
+        if (recyclerView.getLayoutManager() instanceof GridLayoutManager || recyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager) {
             //多列的RecyclerView支持上下左右拖动，不支持左右滑动
             return makeMovementFlags(ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT, 0);
+        } else {
+            //单列的RecyclerView支持上下拖动和左右滑动
+            return makeMovementFlags(ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.START | ItemTouchHelper.END);
         }
     }
 
