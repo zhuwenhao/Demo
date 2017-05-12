@@ -66,10 +66,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         if (isShowWelcome) {
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             layoutWelcome.setVisibility(View.VISIBLE);
             layoutWelcome.postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
                     layoutWelcome.setVisibility(View.GONE);
                     isShowWelcome = false;
                 }
