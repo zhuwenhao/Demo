@@ -118,9 +118,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_bandwagon:
                 startActivity(new Intent(this, BandwagonActivity.class));
                 break;
-            case R.id.nav_drop_down_menu:
-
-                break;
             case R.id.nav_multiple_status_view:
                 startActivity(new Intent(this, MultipleStatusViewActivity.class));
                 break;
