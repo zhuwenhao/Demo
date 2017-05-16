@@ -97,6 +97,26 @@ public class DatabaseUtils {
         values.put("title", bandwagon.getTitle());
         values.put("ve_id", bandwagon.getVeId());
         values.put("api_key", bandwagon.getApiKey());
+        values.put("node_location", "");
+        values.put("os", "");
+        values.put("ip_addresses", "");
+        int number = db.update(DatabaseHelper.TABLE_BANDWAGON, values, "id=?", new String[]{String.valueOf(bandwagon.getId())});
+
+        db.close();
+        return number > 0;
+    }
+
+    /**
+     * 更新搬瓦工主机
+     *
+     * @param context   context
+     * @param bandwagon bandwagon
+     * @return boolean
+     */
+    public static boolean updateBandwagonInfo(Context context, Bandwagon bandwagon) {
+        DatabaseHelper helper = new DatabaseHelper(context, DatabaseHelper.DATABASE_NAME, null, DatabaseHelper.VERSION);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
         values.put("node_location", bandwagon.getNodeLocation());
         values.put("os", bandwagon.getOs());
         values.put("ip_addresses", bandwagon.getIpAddresses());

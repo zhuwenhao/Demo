@@ -1,5 +1,7 @@
 package com.zhuwenhao.demo.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Bandwagon {
 
     private Integer id;
@@ -10,11 +12,13 @@ public class Bandwagon {
 
     private String apiKey;
 
+    @SerializedName("node_location")
     private String nodeLocation;
 
     private String os;
 
-    private String ipAddresses;
+    @SerializedName("ip_addresses")
+    private String[] ipAddresses;
 
     private Integer sort;
 
@@ -85,11 +89,26 @@ public class Bandwagon {
     }
 
     public String getIpAddresses() {
-        return ipAddresses;
+        if (ipAddresses == null) {
+            return null;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < ipAddresses.length; i++) {
+            sb.append(ipAddresses[i]);
+            if (i < ipAddresses.length - 1) {
+                sb.append(",");
+            }
+        }
+        return sb.toString();
     }
 
     public void setIpAddresses(String ipAddresses) {
-        this.ipAddresses = ipAddresses;
+        if (ipAddresses == null || ipAddresses.isEmpty()) {
+            this.ipAddresses = new String[]{};
+        } else {
+            this.ipAddresses = ipAddresses.split(",");
+        }
     }
 
     public Integer getSort() {

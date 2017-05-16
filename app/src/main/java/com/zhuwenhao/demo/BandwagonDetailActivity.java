@@ -1,5 +1,6 @@
 package com.zhuwenhao.demo;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -7,8 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.zhuwenhao.demo.custom.MultipleStatusView;
 import com.zhuwenhao.demo.entity.Bandwagon;
+import com.zhuwenhao.demo.utils.DatabaseUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -27,6 +30,8 @@ public class BandwagonDetailActivity extends AppCompatActivity {
     @BindView(R.id.text_info)
     TextView textInfo;
 
+    private Context context;
+
     private Bandwagon bandwagon;
 
     @Override
@@ -39,6 +44,8 @@ public class BandwagonDetailActivity extends AppCompatActivity {
 
     private void initView() {
         setSupportActionBar(toolbar);
+
+        context = BandwagonDetailActivity.this;
 
         bandwagon = new Bandwagon();
         bandwagon.setId(getIntent().getExtras().getInt("id", -1));
@@ -73,6 +80,11 @@ public class BandwagonDetailActivity extends AppCompatActivity {
                 multipleStatusView.showContent();
 
                 textInfo.setText(response);
+
+                Gson gson = new Gson();
+                Bandwagon bwg = gson.fromJson(response, Bandwagon.class);
+                bwg.setId(bandwagon.getId());
+                DatabaseUtils.updateBandwagonInfo(context, bwg);
             }
         });
     }
