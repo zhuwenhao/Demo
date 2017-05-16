@@ -97,9 +97,9 @@ public class DatabaseUtils {
         values.put("title", bandwagon.getTitle());
         values.put("ve_id", bandwagon.getVeId());
         values.put("api_key", bandwagon.getApiKey());
-        values.put("node_location", "");
-        values.put("os", "");
-        values.put("ip_addresses", "");
+        values.put("node_location", bandwagon.getNodeLocation());
+        values.put("os", bandwagon.getOs());
+        values.put("ip_addresses", bandwagon.getIpAddresses());
         int number = db.update(DatabaseHelper.TABLE_BANDWAGON, values, "id=?", new String[]{String.valueOf(bandwagon.getId())});
 
         db.close();

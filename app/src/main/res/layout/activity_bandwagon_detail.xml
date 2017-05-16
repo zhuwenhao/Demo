@@ -5,4 +5,15 @@
     android:orientation="vertical">
 
     <include layout="@layout/layout_toolbar" />
+
+    <com.zhuwenhao.demo.custom.MultipleStatusView
+        android:id="@+id/multiple_status_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.zhuwenhao.demo.custom.MultipleStatusView>
 </LinearLayout>

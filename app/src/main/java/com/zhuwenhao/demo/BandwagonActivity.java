@@ -93,6 +93,9 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
             @Override
             public void onItemClick(int position) {
                 Intent intent = new Intent(context, BandwagonDetailActivity.class);
+                intent.putExtra("id", bandwagonList.get(position).getId());
+                intent.putExtra("veId", bandwagonList.get(position).getVeId());
+                intent.putExtra("apiKey", bandwagonList.get(position).getApiKey());
                 startActivity(intent);
             }
         });
