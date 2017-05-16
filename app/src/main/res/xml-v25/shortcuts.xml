@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_computer"
+        android:shortcutDisabledMessage="@string/bandwagon"
+        android:shortcutId="bandwagon"
+        android:shortcutLongLabel="@string/bandwagon"
+        android:shortcutShortLabel="@string/bandwagon">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.zhuwenhao.demo.MainActivity"
+            android:targetPackage="com.zhuwenhao.demo" />
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.zhuwenhao.demo.BandwagonActivity"
+            android:targetPackage="com.zhuwenhao.demo" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_switch"
+        android:shortcutDisabledMessage="@string/multiple_status_view"
+        android:shortcutId="multiple_status_view"
+        android:shortcutLongLabel="@string/multiple_status_view"
+        android:shortcutShortLabel="@string/multiple_status_view">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.zhuwenhao.demo.MainActivity"
+            android:targetPackage="com.zhuwenhao.demo" />
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.zhuwenhao.demo.MultipleStatusViewActivity"
+            android:targetPackage="com.zhuwenhao.demo" />
+    </shortcut>
+</shortcuts>
