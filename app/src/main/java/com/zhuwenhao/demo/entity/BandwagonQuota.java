@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName;
 public class BandwagonQuota {
 
     @SerializedName("occupied_kb")
-    private String occupiedKb;
+    private long occupiedKb;
 
     @SerializedName("softlimit_kb")
-    private String softLimitKb;
+    private long softLimitKb;
 
     @SerializedName("hardlimit_kb")
-    private String hardLimitKb;
+    private long hardLimitKb;
 
     @SerializedName("occupied_inodes")
     private String occupiedINodes;
@@ -22,27 +22,27 @@ public class BandwagonQuota {
     @SerializedName("hardlimit_inodes")
     private String hardLimitINodes;
 
-    public String getOccupiedKb() {
+    public long getOccupiedKb() {
         return occupiedKb;
     }
 
-    public void setOccupiedKb(String occupiedKb) {
+    public void setOccupiedKb(long occupiedKb) {
         this.occupiedKb = occupiedKb;
     }
 
-    public String getSoftLimitKb() {
+    public long getSoftLimitKb() {
         return softLimitKb;
     }
 
-    public void setSoftLimitKb(String softLimitKb) {
+    public void setSoftLimitKb(long softLimitKb) {
         this.softLimitKb = softLimitKb;
     }
 
-    public String getHardLimitKb() {
+    public long getHardLimitKb() {
         return hardLimitKb;
     }
 
-    public void setHardLimitKb(String hardLimitKb) {
+    public void setHardLimitKb(long hardLimitKb) {
         this.hardLimitKb = hardLimitKb;
     }
 

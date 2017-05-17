@@ -20,4 +20,14 @@
     <string name="title">标题</string>
     <string name="ve_id">VEID</string>
     <string name="api_key">API KEY</string>
+    <string name="hostname">主机名</string>
+    <string name="node_location">所在地</string>
+    <string name="os">操作系统</string>
+    <string name="ip_addresses">IP地址</string>
+    <string name="ssh_port">SSH端口</string>
+    <string name="status">状态</string>
+    <string name="ram">内存</string>
+    <string name="swap">SWAP</string>
+    <string name="disk">Disk</string>
+    <string name="bandwidth_usage">Bandwidth usage</string>
 </resources>
