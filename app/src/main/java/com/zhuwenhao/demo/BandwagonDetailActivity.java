@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.zhuwenhao.demo.custom.MultipleStatusView;
 import com.zhuwenhao.demo.entity.Bandwagon;
+import com.zhuwenhao.demo.entity.BandwagonInfo;
+import com.zhuwenhao.demo.utils.AppUtils;
 import com.zhuwenhao.demo.utils.DatabaseUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -43,14 +45,15 @@ public class BandwagonDetailActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        toolbar.setTitle(getIntent().getStringExtra("title"));
         setSupportActionBar(toolbar);
 
         context = BandwagonDetailActivity.this;
 
         bandwagon = new Bandwagon();
-        bandwagon.setId(getIntent().getExtras().getInt("id", -1));
-        bandwagon.setVeId(getIntent().getExtras().getString("veId", ""));
-        bandwagon.setApiKey(getIntent().getExtras().getString("apiKey", ""));
+        bandwagon.setId(getIntent().getIntExtra("id", -1));
+        bandwagon.setVeId(getIntent().getStringExtra("veId"));
+        bandwagon.setApiKey(getIntent().getStringExtra("apiKey"));
 
         getServiceInfo();
 
@@ -65,7 +68,7 @@ public class BandwagonDetailActivity extends AppCompatActivity {
     private void getServiceInfo() {
         multipleStatusView.showLoading();
 
-        String url = "https://api.64clouds.com/v1/getServiceInfo";
+        String url = "https://api.64clouds.com/v1/getLiveServiceInfo";
         OkHttpUtils.post().url(url)
                 .addParams("veid", bandwagon.getVeId())
                 .addParams("api_key", bandwagon.getApiKey())
@@ -77,14 +80,23 @@ public class BandwagonDetailActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(String response, int id) {
-                multipleStatusView.showContent();
+                try {
+                    textInfo.setText(response);
 
-                textInfo.setText(response);
+                    Gson gson = new Gson();
+                    BandwagonInfo bandwagonInfo = gson.fromJson(response, BandwagonInfo.class);
+                    if (bandwagonInfo.getError() == 0) {
+                        bandwagon.setBandwagonInfo(bandwagonInfo);
+                        DatabaseUtils.updateBandwagonInfo(context, bandwagon);
 
-                Gson gson = new Gson();
-                Bandwagon bwg = gson.fromJson(response, Bandwagon.class);
-                bwg.setId(bandwagon.getId());
-                DatabaseUtils.updateBandwagonInfo(context, bwg);
+                        multipleStatusView.showContent();
+                    } else {
+                        AppUtils.showToast(context, bandwagonInfo.getMessage());
+                        multipleStatusView.showError();
+                    }
+                } catch (Exception e) {
+                    multipleStatusView.showError();
+                }
             }
         });
     }

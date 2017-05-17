@@ -52,13 +52,13 @@ public class BandwagonAdapter extends RecyclerView.Adapter<BandwagonAdapter.Band
                 }
             });
         }
-        if (bandwagonList.get(position).getNodeLocation() == null || bandwagonList.get(position).getNodeLocation().isEmpty()) {
+        if (bandwagonList.get(position).getBandwagonInfo().getNodeLocation() == null || bandwagonList.get(position).getBandwagonInfo().getNodeLocation().isEmpty()) {
             holder.layoutText.setVisibility(View.GONE);
         } else {
             holder.layoutText.setVisibility(View.VISIBLE);
-            holder.textNodeLocation.setText(bandwagonList.get(position).getNodeLocation());
-            holder.textOs.setText(bandwagonList.get(position).getOs());
-            holder.textIpAddresses.setText(bandwagonList.get(position).getIpAddresses());
+            holder.textNodeLocation.setText(bandwagonList.get(position).getBandwagonInfo().getNodeLocation());
+            holder.textOs.setText(bandwagonList.get(position).getBandwagonInfo().getOs());
+            holder.textIpAddresses.setText(bandwagonList.get(position).getBandwagonInfo().getIpAddresses());
         }
     }
 

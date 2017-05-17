@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.zhuwenhao.demo.entity.Bandwagon;
+import com.zhuwenhao.demo.entity.BandwagonInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,9 +31,7 @@ public class DatabaseUtils {
             bandwagon.setTitle(cursor.getString(cursor.getColumnIndex("title")));
             bandwagon.setVeId(cursor.getString(cursor.getColumnIndex("ve_id")));
             bandwagon.setApiKey(cursor.getString(cursor.getColumnIndex("api_key")));
-            bandwagon.setNodeLocation(cursor.getString(cursor.getColumnIndex("node_location")));
-            bandwagon.setOs(cursor.getString(cursor.getColumnIndex("os")));
-            bandwagon.setIpAddresses(cursor.getString(cursor.getColumnIndex("ip_addresses")));
+            bandwagon.setBandwagonInfo(new BandwagonInfo(cursor.getString(cursor.getColumnIndex("node_location")), cursor.getString(cursor.getColumnIndex("os")), cursor.getString(cursor.getColumnIndex("ip_addresses"))));
             bandwagon.setSort(cursor.getInt(cursor.getColumnIndex("sort")));
             bandwagonList.add(bandwagon);
         }
@@ -117,9 +116,9 @@ public class DatabaseUtils {
         DatabaseHelper helper = new DatabaseHelper(context, DatabaseHelper.DATABASE_NAME, null, DatabaseHelper.VERSION);
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("node_location", bandwagon.getNodeLocation());
-        values.put("os", bandwagon.getOs());
-        values.put("ip_addresses", bandwagon.getIpAddresses());
+        values.put("node_location", bandwagon.getBandwagonInfo().getNodeLocation());
+        values.put("os", bandwagon.getBandwagonInfo().getOs());
+        values.put("ip_addresses", bandwagon.getBandwagonInfo().getIpAddresses());
         int number = db.update(DatabaseHelper.TABLE_BANDWAGON, values, "id=?", new String[]{String.valueOf(bandwagon.getId())});
 
         db.close();
