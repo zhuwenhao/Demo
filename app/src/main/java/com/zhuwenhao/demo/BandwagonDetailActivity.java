@@ -98,25 +98,28 @@ public class BandwagonDetailActivity extends AppCompatActivity {
         bandwagon.setVeId(getIntent().getStringExtra("veId"));
         bandwagon.setApiKey(getIntent().getStringExtra("apiKey"));
 
-        getServiceInfo();
+        getServiceInfo(false);
 
         multipleStatusView.setOnRetryClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getServiceInfo();
+                getServiceInfo(false);
             }
         });
 
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                swipeRefreshLayout.setRefreshing(false);
+                getServiceInfo(true);
             }
         });
     }
 
-    private void getServiceInfo() {
-        multipleStatusView.showLoading();
+    private void getServiceInfo(final boolean refresh) {
+        if (!refresh) {
+            multipleStatusView.showLoading();
+        }
 
         String url = "https://api.64clouds.com/v1/getLiveServiceInfo";
         OkHttpUtils.post().url(url)
@@ -125,7 +128,12 @@ public class BandwagonDetailActivity extends AppCompatActivity {
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-                multipleStatusView.showError();
+                AppUtils.showToast(context, e.getMessage());
+                if (refresh) {
+                    swipeRefreshLayout.setRefreshing(false);
+                } else {
+                    multipleStatusView.showError();
+                }
             }
 
             @Override
@@ -149,13 +157,26 @@ public class BandwagonDetailActivity extends AppCompatActivity {
                         bandwagon.setBandwagonInfo(bandwagonInfo);
                         DatabaseUtils.updateBandwagonInfo(context, bandwagon);
 
-                        multipleStatusView.showContent();
+                        if (refresh) {
+                            swipeRefreshLayout.setRefreshing(false);
+                        } else {
+                            multipleStatusView.showContent();
+                        }
                     } else {
                         AppUtils.showToast(context, bandwagonInfo.getMessage());
-                        multipleStatusView.showError();
+                        if (refresh) {
+                            swipeRefreshLayout.setRefreshing(false);
+                        } else {
+                            multipleStatusView.showError();
+                        }
                     }
                 } catch (Exception e) {
-                    multipleStatusView.showError();
+                    AppUtils.showToast(context, e.getMessage());
+                    if (refresh) {
+                        swipeRefreshLayout.setRefreshing(false);
+                    } else {
+                        multipleStatusView.showError();
+                    }
                 }
             }
         });

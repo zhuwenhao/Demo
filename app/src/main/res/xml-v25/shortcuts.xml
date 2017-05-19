@@ -11,11 +11,6 @@
 
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="com.zhuwenhao.demo.MainActivity"
-            android:targetPackage="com.zhuwenhao.demo" />
-
-        <intent
-            android:action="android.intent.action.VIEW"
             android:targetClass="com.zhuwenhao.demo.BandwagonActivity"
             android:targetPackage="com.zhuwenhao.demo" />
     </shortcut>
@@ -27,11 +22,6 @@
         android:shortcutId="multiple_status_view"
         android:shortcutLongLabel="@string/multiple_status_view"
         android:shortcutShortLabel="@string/multiple_status_view">
-
-        <intent
-            android:action="android.intent.action.VIEW"
-            android:targetClass="com.zhuwenhao.demo.MainActivity"
-            android:targetPackage="com.zhuwenhao.demo" />
 
         <intent
             android:action="android.intent.action.VIEW"
