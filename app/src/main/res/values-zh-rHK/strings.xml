@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bandwagon">搬瓦工</string>
+    <string name="multiple_status_view">多狀態視圖</string>
+
+    <string name="hostname">主機名</string>
+    <string name="node_location">所在地</string>
+    <string name="os">操作系統</string>
+    <string name="ip_addresses">IP地址</string>
+    <string name="ssh_port">SSH端口</string>
+    <string name="status">狀態</string>
+</resources>
