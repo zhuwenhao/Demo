@@ -3,6 +3,11 @@
     <string name="bandwagon">Bandwagon</string>
     <string name="multiple_status_view">MultipleStatusView</string>
 
+    <string name="add_bandwagon">Add Bandwagon</string>
+    <string name="edit_bandwagon">Edit Bandwagon</string>
+    <string name="view_my_bandwagon">View my bandwagon</string>
+    <string name="removed">%d items removed</string>
+    <string name="undo">Undo</string>
     <string name="hostname">Hostname</string>
     <string name="node_location">Node Location</string>
     <string name="os">Operating system</string>

@@ -17,9 +17,14 @@
     <string name="show_error_view">显示错误视图</string>
     <string name="show_no_network_view">显示网络异常视图</string>
 
+    <string name="add_bandwagon">添加主机</string>
+    <string name="edit_bandwagon">编辑主机</string>
+    <string name="view_my_bandwagon">查看我的主机</string>
     <string name="title">标题</string>
     <string name="ve_id">VEID</string>
     <string name="api_key">API KEY</string>
+    <string name="removed">已删除 %d 项</string>
+    <string name="undo">撤销</string>
     <string name="hostname">主机名</string>
     <string name="node_location">所在地</string>
     <string name="os">操作系统</string>

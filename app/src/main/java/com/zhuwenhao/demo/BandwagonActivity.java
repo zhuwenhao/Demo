@@ -135,11 +135,11 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
 
     private void showDialog(final boolean isEdit, final int position) {
         MaterialDialog dialog = new MaterialDialog.Builder(this)
-                .title(isEdit ? "编辑主机" : "添加主机")
+                .title(isEdit ? R.string.edit_bandwagon : R.string.add_bandwagon)
                 .customView(R.layout.dialog_bandwagon_add, true)
-                .neutralText("查看我的主机")
-                .positiveText("确定")
-                .negativeText("取消")
+                .neutralText(R.string.view_my_bandwagon)
+                .positiveText(android.R.string.ok)
+                .negativeText(android.R.string.cancel)
                 .onNeutral(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
@@ -204,7 +204,7 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
 
         bandwagonList.remove(position);
         adapter.notifyItemRemoved(position);
-        snackbar = Snackbar.make(fabAdd, "已删除 " + deleteList.size() + " 项", Snackbar.LENGTH_LONG).setAction("撤销", new View.OnClickListener() {
+        snackbar = Snackbar.make(fabAdd, String.format(getResources().getString(R.string.removed), deleteList.size()), Snackbar.LENGTH_LONG).setAction(R.string.undo, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //排序

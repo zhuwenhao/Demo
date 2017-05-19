@@ -3,6 +3,11 @@
     <string name="bandwagon">搬瓦工</string>
     <string name="multiple_status_view">多狀態視圖</string>
 
+    <string name="add_bandwagon">添加主機</string>
+    <string name="edit_bandwagon">編輯主機</string>
+    <string name="view_my_bandwagon">查看我的主機</string>
+    <string name="removed">已移除 %d 項</string>
+    <string name="undo">復原</string>
     <string name="hostname">主機名</string>
     <string name="node_location">所在地</string>
     <string name="os">操作系統</string>
