@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="bandwagon">Bandwagon</string>
+    <string name="subway">Subway</string>
     <string name="multiple_status_view">MultipleStatusView</string>
 
-    <string name="add_bandwagon">Add Bandwagon</string>
-    <string name="edit_bandwagon">Edit Bandwagon</string>
+    <string name="add_bandwagon">Add bandwagon</string>
+    <string name="edit_bandwagon">Edit bandwagon</string>
     <string name="view_my_bandwagon">View my bandwagon</string>
     <string name="removed">%d items removed</string>
     <string name="undo">Undo</string>
     <string name="hostname">Hostname</string>
-    <string name="node_location">Node Location</string>
+    <string name="node_location">Node location</string>
     <string name="os">Operating system</string>
     <string name="ip_addresses">IP address</string>
-    <string name="ssh_port">SSH Port</string>
+    <string name="ssh_port">SSH port</string>
     <string name="status">Status</string>
+
+    <string name="refresh">Refresh</string>
+    <string name="copy_url">Copy url</string>
+    <string name="open_in_browser">Open in browser</string>
+    <string name="copy_success">Copy success</string>
 </resources>

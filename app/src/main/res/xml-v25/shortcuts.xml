@@ -17,15 +17,16 @@
 
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_switch"
-        android:shortcutDisabledMessage="@string/multiple_status_view"
-        android:shortcutId="multiple_status_view"
-        android:shortcutLongLabel="@string/multiple_status_view"
-        android:shortcutShortLabel="@string/multiple_status_view">
+        android:icon="@drawable/ic_subway"
+        android:shortcutDisabledMessage="@string/subway"
+        android:shortcutId="subway"
+        android:shortcutLongLabel="@string/subway"
+        android:shortcutShortLabel="@string/subway">
 
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="com.zhuwenhao.demo.MultipleStatusViewActivity"
+            android:data="http://m.amap.com/subway/"
+            android:targetClass="com.zhuwenhao.demo.WebActivity"
             android:targetPackage="com.zhuwenhao.demo" />
     </shortcut>
 </shortcuts>

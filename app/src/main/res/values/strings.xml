@@ -7,6 +7,7 @@
     <string name="email">zhuwenhaox@gmail.com</string>
 
     <string name="bandwagon">搬瓦工</string>
+    <string name="subway">地铁图</string>
     <string name="multiple_status_view">多状态视图</string>
 
     <string name="content">这里是内容</string>
@@ -35,4 +36,9 @@
     <string name="swap">SWAP</string>
     <string name="disk">Disk</string>
     <string name="bandwidth_usage">Bandwidth usage</string>
+
+    <string name="refresh">刷新</string>
+    <string name="copy_url">复制链接地址</string>
+    <string name="open_in_browser">在浏览器中打开</string>
+    <string name="copy_success">复制成功</string>
 </resources>

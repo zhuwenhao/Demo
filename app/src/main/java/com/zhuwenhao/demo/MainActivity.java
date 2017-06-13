@@ -1,6 +1,7 @@
 package com.zhuwenhao.demo;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -19,6 +20,7 @@ import com.zhuwenhao.demo.adapter.ViewPagerAdapter;
 import com.zhuwenhao.demo.fragment.Fragment1;
 import com.zhuwenhao.demo.fragment.Fragment2;
 import com.zhuwenhao.demo.fragment.Fragment3;
+import com.zhuwenhao.demo.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,9 +118,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.nav_bandwagon:
                 startActivity(new Intent(this, BandwagonActivity.class));
+                break;
+            case R.id.nav_subway:
+                intent = new Intent(this, WebActivity.class);
+                intent.setData(Uri.parse(Constants.SUBWAY_URL_DEFAULT));
+                startActivity(intent);
                 break;
             case R.id.nav_multiple_status_view:
                 startActivity(new Intent(this, MultipleStatusViewActivity.class));
