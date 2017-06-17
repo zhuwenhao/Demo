@@ -1,6 +1,8 @@
 package com.zhuwenhao.demo.entity;
 
-public class Bandwagon {
+import java.io.Serializable;
+
+public class Bandwagon implements Serializable {
 
     private Integer id;
 

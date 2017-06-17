@@ -2,7 +2,9 @@ package com.zhuwenhao.demo.entity;
 
 import com.google.gson.annotations.SerializedName;
 
-public class BandwagonInfo {
+import java.io.Serializable;
+
+public class BandwagonInfo implements Serializable {
 
     @SerializedName("vm_type")
     private String vmType;

@@ -6,7 +6,7 @@
 
     <string name="add_bandwagon">Add bandwagon</string>
     <string name="edit_bandwagon">Edit bandwagon</string>
-    <string name="view_my_bandwagon">View my bandwagon</string>
+    <string name="help">Help</string>
     <string name="removed">%d items removed</string>
     <string name="undo">Undo</string>
     <string name="hostname">Hostname</string>
@@ -15,6 +15,7 @@
     <string name="ip_addresses">IP address</string>
     <string name="ssh_port">SSH port</string>
     <string name="status">Status</string>
+    <string name="resets">Resets: %s</string>
 
     <string name="refresh">Refresh</string>
     <string name="copy_url">Copy url</string>

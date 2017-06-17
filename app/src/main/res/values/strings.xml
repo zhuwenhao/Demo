@@ -20,7 +20,7 @@
 
     <string name="add_bandwagon">添加主机</string>
     <string name="edit_bandwagon">编辑主机</string>
-    <string name="view_my_bandwagon">查看我的主机</string>
+    <string name="help">帮助</string>
     <string name="title">标题</string>
     <string name="ve_id">VEID</string>
     <string name="api_key">API KEY</string>
@@ -36,6 +36,7 @@
     <string name="swap">SWAP</string>
     <string name="disk">Disk</string>
     <string name="bandwidth_usage">Bandwidth usage</string>
+    <string name="resets">重置：%s</string>
 
     <string name="refresh">刷新</string>
     <string name="copy_url">复制链接地址</string>

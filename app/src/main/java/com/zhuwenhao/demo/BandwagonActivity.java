@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
@@ -27,6 +28,7 @@ import com.zhuwenhao.demo.entity.Bandwagon;
 import com.zhuwenhao.demo.listener.OnItemClickListener;
 import com.zhuwenhao.demo.listener.OnItemEditClickListener;
 import com.zhuwenhao.demo.listener.OnMoveAndSwipedListener;
+import com.zhuwenhao.demo.utils.Constants;
 import com.zhuwenhao.demo.utils.DatabaseUtils;
 import com.zhuwenhao.demo.utils.ItemTouchHelperCallback;
 
@@ -93,10 +95,7 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
             @Override
             public void onItemClick(int position) {
                 Intent intent = new Intent(context, BandwagonDetailActivity.class);
-                intent.putExtra("id", bandwagonList.get(position).getId());
-                intent.putExtra("title", bandwagonList.get(position).getTitle());
-                intent.putExtra("veId", bandwagonList.get(position).getVeId());
-                intent.putExtra("apiKey", bandwagonList.get(position).getApiKey());
+                intent.putExtra("bandwagon", bandwagonList.get(position));
                 startActivity(intent);
             }
         });
@@ -137,17 +136,8 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
         MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title(isEdit ? R.string.edit_bandwagon : R.string.add_bandwagon)
                 .customView(R.layout.dialog_bandwagon_add, true)
-                .neutralText(R.string.view_my_bandwagon)
                 .positiveText(android.R.string.ok)
                 .negativeText(android.R.string.cancel)
-                .onNeutral(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("https://kiwivm.64clouds.com/"));
-                        startActivity(intent);
-                    }
-                })
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
@@ -256,11 +246,22 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_help, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
             case android.R.id.home:
                 onBackPressed();
+                break;
+            case R.id.menu_help:
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(Constants.BANDWAGON_URL_HELP));
+                startActivity(intent);
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -2,7 +2,9 @@ package com.zhuwenhao.demo.entity;
 
 import com.google.gson.annotations.SerializedName;
 
-public class BandwagonStatus {
+import java.io.Serializable;
+
+public class BandwagonStatus implements Serializable {
 
     private String status;
 

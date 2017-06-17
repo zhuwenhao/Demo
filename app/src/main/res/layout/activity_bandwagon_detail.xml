@@ -38,7 +38,7 @@
                         <TextView
                             android:id="@+id/text_hostname"
                             style="@style/TextPrimary"
-                            android:layout_marginTop="4dp" />
+                            android:layout_marginTop="2dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -54,7 +54,7 @@
                         <TextView
                             android:id="@+id/text_node_location"
                             style="@style/TextPrimary"
-                            android:layout_marginTop="4dp" />
+                            android:layout_marginTop="2dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -70,7 +70,7 @@
                         <TextView
                             android:id="@+id/text_os"
                             style="@style/TextPrimary"
-                            android:layout_marginTop="4dp" />
+                            android:layout_marginTop="2dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -86,7 +86,7 @@
                         <TextView
                             android:id="@+id/text_ip_addresses"
                             style="@style/TextPrimary"
-                            android:layout_marginTop="4dp" />
+                            android:layout_marginTop="2dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -102,7 +102,7 @@
                         <TextView
                             android:id="@+id/text_ssh_port"
                             style="@style/TextPrimary"
-                            android:layout_marginTop="4dp" />
+                            android:layout_marginTop="2dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -118,7 +118,7 @@
                         <TextView
                             android:id="@+id/text_status"
                             style="@style/TextPrimary"
-                            android:layout_marginTop="4dp" />
+                            android:layout_marginTop="2dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -134,7 +134,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp">
+                            android:layout_marginTop="2dp">
 
                             <TextView
                                 android:id="@+id/text_used_ram"
@@ -149,6 +149,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
+
+                        <ProgressBar
+                            android:id="@+id/pb_ram"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -164,7 +171,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp">
+                            android:layout_marginTop="2dp">
 
                             <TextView
                                 android:id="@+id/text_used_swap"
@@ -179,6 +186,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
+
+                        <ProgressBar
+                            android:id="@+id/pb_swap"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -194,7 +208,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp">
+                            android:layout_marginTop="2dp">
 
                             <TextView
                                 android:id="@+id/text_used_disk"
@@ -209,6 +223,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
+
+                        <ProgressBar
+                            android:id="@+id/pb_disk"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -224,7 +245,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp">
+                            android:layout_marginTop="2dp">
 
                             <TextView
                                 android:id="@+id/text_used_data"
@@ -239,6 +260,17 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
+
+                        <ProgressBar
+                            android:id="@+id/pb_data"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp" />
+
+                        <TextView
+                            android:id="@+id/text_resets"
+                            style="@style/TextSecondary" />
                     </LinearLayout>
                 </LinearLayout>
             </android.support.v4.widget.NestedScrollView>

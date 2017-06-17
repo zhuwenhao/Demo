@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -14,9 +15,12 @@ import com.zhuwenhao.demo.custom.MultipleStatusView;
 import com.zhuwenhao.demo.entity.Bandwagon;
 import com.zhuwenhao.demo.entity.BandwagonInfo;
 import com.zhuwenhao.demo.utils.AppUtils;
+import com.zhuwenhao.demo.utils.Constants;
 import com.zhuwenhao.demo.utils.DatabaseUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.joda.time.DateTime;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,11 +61,17 @@ public class BandwagonDetailActivity extends AppCompatActivity {
     @BindView(R.id.text_total_ram)
     TextView textTotalRam;
 
+    @BindView(R.id.pb_ram)
+    ProgressBar pbRam;
+
     @BindView(R.id.text_used_swap)
     TextView textUsedSwap;
 
     @BindView(R.id.text_total_swap)
     TextView textTotalSwap;
+
+    @BindView(R.id.pb_swap)
+    ProgressBar pbSwap;
 
     @BindView(R.id.text_used_disk)
     TextView textUsedDisk;
@@ -69,11 +79,20 @@ public class BandwagonDetailActivity extends AppCompatActivity {
     @BindView(R.id.text_total_disk)
     TextView textTotalDisk;
 
+    @BindView(R.id.pb_disk)
+    ProgressBar pbDisk;
+
     @BindView(R.id.text_used_data)
     TextView textUsedData;
 
     @BindView(R.id.text_total_data)
     TextView textTotalData;
+
+    @BindView(R.id.pb_data)
+    ProgressBar pbData;
+
+    @BindView(R.id.text_resets)
+    TextView textResets;
 
     private Context context;
 
@@ -88,15 +107,11 @@ public class BandwagonDetailActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        toolbar.setTitle(getIntent().getStringExtra("title"));
+        bandwagon = (Bandwagon) getIntent().getSerializableExtra("bandwagon");
+        toolbar.setTitle(bandwagon.getTitle());
         setSupportActionBar(toolbar);
 
         context = BandwagonDetailActivity.this;
-
-        bandwagon = new Bandwagon();
-        bandwagon.setId(getIntent().getIntExtra("id", -1));
-        bandwagon.setVeId(getIntent().getStringExtra("veId"));
-        bandwagon.setApiKey(getIntent().getStringExtra("apiKey"));
 
         getServiceInfo(false);
 
@@ -121,7 +136,7 @@ public class BandwagonDetailActivity extends AppCompatActivity {
             multipleStatusView.showLoading();
         }
 
-        String url = "https://api.64clouds.com/v1/getLiveServiceInfo";
+        String url = Constants.BANDWAGON_URL_API + "getLiveServiceInfo";
         OkHttpUtils.post().url(url)
                 .addParams("veid", bandwagon.getVeId())
                 .addParams("api_key", bandwagon.getApiKey())
@@ -153,6 +168,7 @@ public class BandwagonDetailActivity extends AppCompatActivity {
                         textTotalDisk.setText(AppUtils.conversionByte(bandwagonInfo.getPlanDisk()));
                         textUsedData.setText(AppUtils.conversionByte(bandwagonInfo.getDataCounter()));
                         textTotalData.setText(AppUtils.conversionByte(bandwagonInfo.getPlanMonthlyData()));
+                        textResets.setText(String.format(getResources().getString(R.string.resets), new DateTime(bandwagonInfo.getDataNextReset() * 1000).toString("yyyy-MM-dd")));
 
                         bandwagon.setBandwagonInfo(bandwagonInfo);
                         DatabaseUtils.updateBandwagonInfo(context, bandwagon);

@@ -2,7 +2,9 @@ package com.zhuwenhao.demo.entity;
 
 import com.google.gson.annotations.SerializedName;
 
-public class BandwagonQuota {
+import java.io.Serializable;
+
+public class BandwagonQuota implements Serializable {
 
     @SerializedName("occupied_kb")
     private long occupiedKb;
