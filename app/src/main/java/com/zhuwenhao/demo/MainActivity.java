@@ -128,9 +128,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent.setData(Uri.parse(Constants.SUBWAY_URL_DEFAULT));
                 startActivity(intent);
                 break;
-            case R.id.nav_multiple_status_view:
-                startActivity(new Intent(this, MultipleStatusViewActivity.class));
-                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

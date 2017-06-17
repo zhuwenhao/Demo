@@ -36,10 +36,6 @@
             android:name=".BandwagonDetailActivity"
             android:label="@string/bandwagon"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".MultipleStatusViewActivity"
-            android:label="@string/multiple_status_view"
-            android:screenOrientation="portrait" />
         <activity android:name=".WebActivity" />
     </application>
 

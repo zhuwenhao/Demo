@@ -8,15 +8,10 @@
 
     <string name="bandwagon">搬瓦工</string>
     <string name="subway">地铁图</string>
-    <string name="multiple_status_view">多状态视图</string>
 
-    <string name="content">这里是内容</string>
     <string name="empty">这里空空的</string>
     <string name="error">加载失败</string>
     <string name="no_network">网络异常</string>
-    <string name="show_empty_view">显示空视图</string>
-    <string name="show_error_view">显示错误视图</string>
-    <string name="show_no_network_view">显示网络异常视图</string>
 
     <string name="add_bandwagon">添加主机</string>
     <string name="edit_bandwagon">编辑主机</string>

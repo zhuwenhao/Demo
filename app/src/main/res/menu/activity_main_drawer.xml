@@ -12,10 +12,5 @@
             android:id="@+id/nav_subway"
             android:icon="@drawable/ic_subway"
             android:title="@string/subway" />
-
-        <item
-            android:id="@+id/nav_multiple_status_view"
-            android:icon="@drawable/ic_switch"
-            android:title="@string/multiple_status_view" />
     </group>
 </menu>

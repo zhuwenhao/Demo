@@ -2,7 +2,6 @@
 <resources>
     <string name="bandwagon">Bandwagon</string>
     <string name="subway">Subway</string>
-    <string name="multiple_status_view">MultipleStatusView</string>
 
     <string name="add_bandwagon">Add bandwagon</string>
     <string name="edit_bandwagon">Edit bandwagon</string>
