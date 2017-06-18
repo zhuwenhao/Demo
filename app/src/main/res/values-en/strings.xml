@@ -3,6 +3,10 @@
     <string name="bandwagon">Bandwagon</string>
     <string name="subway">Subway</string>
 
+    <string name="empty">This is empty</string>
+    <string name="error">Failed to load</string>
+    <string name="no_network">No network connection</string>
+
     <string name="add_bandwagon">Add bandwagon</string>
     <string name="edit_bandwagon">Edit bandwagon</string>
     <string name="help">Help</string>
@@ -14,7 +18,18 @@
     <string name="ip_addresses">IP address</string>
     <string name="ssh_port">SSH port</string>
     <string name="status">Status</string>
+    <string name="ram">RAM</string>
     <string name="resets">Resets: %s</string>
+
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="reboot">Reboot</string>
+    <string name="kill">Kill</string>
+    <string name="more">More</string>
+    <string name="reset_root_password">Reset root password</string>
+    <string name="install_new_os">Install new OS</string>
+
+    <string name="please_wait">Please wait&#8230;</string>
 
     <string name="refresh">Refresh</string>
     <string name="copy_url">Copy url</string>

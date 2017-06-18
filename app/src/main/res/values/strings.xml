@@ -33,6 +33,16 @@
     <string name="bandwidth_usage">Bandwidth usage</string>
     <string name="resets">重置：%s</string>
 
+    <string name="start">启动</string>
+    <string name="stop">停止</string>
+    <string name="reboot">重启</string>
+    <string name="kill">杀死</string>
+    <string name="more">更多</string>
+    <string name="reset_root_password">重置Root密码</string>
+    <string name="install_new_os">安装新系统</string>
+
+    <string name="please_wait">请稍候&#8230;</string>
+
     <string name="refresh">刷新</string>
     <string name="copy_url">复制链接地址</string>
     <string name="open_in_browser">在浏览器中打开</string>

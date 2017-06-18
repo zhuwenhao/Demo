@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
 import com.zhuwenhao.demo.custom.MultipleStatusView;
 import com.zhuwenhao.demo.entity.Bandwagon;
@@ -17,6 +18,8 @@ import com.zhuwenhao.demo.entity.BandwagonInfo;
 import com.zhuwenhao.demo.utils.AppUtils;
 import com.zhuwenhao.demo.utils.Constants;
 import com.zhuwenhao.demo.utils.DatabaseUtils;
+import com.zhuwenhao.demo.utils.MaterialDialogUtils;
+import com.zhuwenhao.demo.utils.NetworkUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -98,6 +101,13 @@ public class BandwagonDetailActivity extends AppCompatActivity {
 
     private Bandwagon bandwagon;
 
+    private SwipeRefreshLayout.OnRefreshListener onRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            getServiceInfo(true);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,15 +133,15 @@ public class BandwagonDetailActivity extends AppCompatActivity {
         });
 
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                getServiceInfo(true);
-            }
-        });
+        swipeRefreshLayout.setOnRefreshListener(onRefreshListener);
     }
 
     private void getServiceInfo(final boolean refresh) {
+        if (!NetworkUtils.isNetworkConnected(this)) {
+            multipleStatusView.showNoNetwork();
+            return;
+        }
+
         if (!refresh) {
             multipleStatusView.showLoading();
         }
@@ -173,6 +183,10 @@ public class BandwagonDetailActivity extends AppCompatActivity {
                         bandwagon.setBandwagonInfo(bandwagonInfo);
                         DatabaseUtils.updateBandwagonInfo(context, bandwagon);
 
+                        if (toolbar.getMenu().size() == 0) {
+                            toolbar.inflateMenu(R.menu.menu_bandwagon_detail);
+                        }
+
                         if (refresh) {
                             swipeRefreshLayout.setRefreshing(false);
                         } else {
@@ -198,12 +212,68 @@ public class BandwagonDetailActivity extends AppCompatActivity {
         });
     }
 
+    private void doStartOrStopOrRebootOrKill(String url) {
+        if (!NetworkUtils.isNetworkConnected(this)) {
+            AppUtils.showToast(this, R.string.no_network);
+            return;
+        }
+
+        final MaterialDialog dialog = MaterialDialogUtils.showProgressDialog(this, false);
+
+        url = Constants.BANDWAGON_URL_API + url;
+        OkHttpUtils.post().url(url)
+                .addParams("veid", bandwagon.getVeId())
+                .addParams("api_key", bandwagon.getApiKey())
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                dialog.dismiss();
+                AppUtils.showToast(context, e.getMessage());
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                dialog.dismiss();
+
+                try {
+                    Gson gson = new Gson();
+                    BandwagonInfo bandwagonInfo = gson.fromJson(response, BandwagonInfo.class);
+                    if (bandwagonInfo.getError() == 0) {
+                        swipeRefreshLayout.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                swipeRefreshLayout.setRefreshing(true);
+                                onRefreshListener.onRefresh();
+                            }
+                        });
+                    } else {
+                        AppUtils.showToast(context, bandwagonInfo.getMessage());
+                    }
+                } catch (Exception e) {
+                    AppUtils.showToast(context, e.getMessage());
+                }
+            }
+        });
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
             case android.R.id.home:
                 onBackPressed();
+                break;
+            case R.id.menu_start:
+                doStartOrStopOrRebootOrKill("start");
+                break;
+            case R.id.menu_stop:
+                doStartOrStopOrRebootOrKill("stop");
+                break;
+            case R.id.menu_reboot:
+                doStartOrStopOrRebootOrKill("restart");
+                break;
+            case R.id.menu_kill:
+                doStartOrStopOrRebootOrKill("kill");
                 break;
         }
         return super.onOptionsItemSelected(item);
