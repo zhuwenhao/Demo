@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.zhuwenhao.demo.custom.MultipleStatusView;
 import com.zhuwenhao.demo.entity.Bandwagon;
 import com.zhuwenhao.demo.entity.BandwagonInfo;
+import com.zhuwenhao.demo.entity.BandwagonOS;
 import com.zhuwenhao.demo.utils.AppUtils;
 import com.zhuwenhao.demo.utils.Constants;
 import com.zhuwenhao.demo.utils.DatabaseUtils;
@@ -256,6 +257,49 @@ public class BandwagonDetailActivity extends AppCompatActivity {
         });
     }
 
+    private void getAvailableOS() {
+        if (!NetworkUtils.isNetworkConnected(this)) {
+            AppUtils.showToast(this, R.string.no_network);
+            return;
+        }
+
+        final MaterialDialog dialog = MaterialDialogUtils.showProgressDialog(this, false);
+
+        String url = Constants.BANDWAGON_URL_API + "getAvailableOS";
+        OkHttpUtils.post().url(url)
+                .addParams("veid", bandwagon.getVeId())
+                .addParams("api_key", bandwagon.getApiKey())
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                dialog.dismiss();
+                AppUtils.showToast(context, e.getMessage());
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                dialog.dismiss();
+
+                try {
+                    Gson gson = new Gson();
+                    BandwagonOS bandwagonOS = gson.fromJson(response, BandwagonOS.class);
+                    if (bandwagonOS.getError() == 0) {
+                        MaterialDialogUtils.showLongListAndConfirmDialog(context, R.string.install_new_os, R.string.install_new_os_hint, bandwagonOS.getTemplates(), new MaterialDialogUtils.OnDialogDismissListener() {
+                            @Override
+                            public void onDismiss(int position, CharSequence text) {
+                                AppUtils.showToast(context, text);
+                            }
+                        });
+                    } else {
+                        AppUtils.showToast(context, bandwagonOS.getMessage());
+                    }
+                } catch (Exception e) {
+                    AppUtils.showToast(context, e.getMessage());
+                }
+            }
+        });
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -274,6 +318,12 @@ public class BandwagonDetailActivity extends AppCompatActivity {
                 break;
             case R.id.menu_kill:
                 doStartOrStopOrRebootOrKill("kill");
+                break;
+            case R.id.menu_reset_root_password:
+
+                break;
+            case R.id.menu_install_new_os:
+                getAvailableOS();
                 break;
         }
         return super.onOptionsItemSelected(item);

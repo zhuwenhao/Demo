@@ -11,7 +11,7 @@ public class AppUtils {
      * @param context context
      * @param content content
      */
-    public static void showToast(Context context, String content) {
+    public static void showToast(Context context, CharSequence content) {
         Toast.makeText(context, content, Toast.LENGTH_SHORT).show();
     }
 
