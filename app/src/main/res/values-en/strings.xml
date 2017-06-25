@@ -10,15 +10,21 @@
     <string name="add_bandwagon">Add bandwagon</string>
     <string name="edit_bandwagon">Edit bandwagon</string>
     <string name="help">Help</string>
+    <string name="title">Title</string>
     <string name="removed">%d items removed</string>
     <string name="undo">Undo</string>
     <string name="hostname">Hostname</string>
+    <string name="vm_type">Type</string>
     <string name="node_location">Node location</string>
     <string name="os">Operating system</string>
     <string name="ip_addresses">IP address</string>
     <string name="ssh_port">SSH port</string>
     <string name="status">Status</string>
+    <string name="cpu_load">CPU load</string>
     <string name="ram">RAM</string>
+    <string name="swap">SWAP</string>
+    <string name="disk_usage">Disk usage</string>
+    <string name="bandwidth_usage">Bandwidth usage</string>
     <string name="resets">Resets: %s</string>
 
     <string name="start">Start</string>

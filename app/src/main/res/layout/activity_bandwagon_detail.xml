@@ -49,6 +49,22 @@
 
                         <TextView
                             style="@style/TextSecondary"
+                            android:text="@string/vm_type" />
+
+                        <TextView
+                            android:id="@+id/text_vm_type"
+                            style="@style/TextPrimary"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextSecondary"
                             android:text="@string/node_location" />
 
                         <TextView
@@ -117,6 +133,22 @@
 
                         <TextView
                             android:id="@+id/text_status"
+                            style="@style/TextPrimary"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextSecondary"
+                            android:text="@string/cpu_load" />
+
+                        <TextView
+                            android:id="@+id/text_cpu_load"
                             style="@style/TextPrimary"
                             android:layout_marginTop="2dp" />
                     </LinearLayout>
@@ -203,7 +235,7 @@
 
                         <TextView
                             style="@style/TextSecondary"
-                            android:text="@string/disk" />
+                            android:text="@string/disk_usage" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
