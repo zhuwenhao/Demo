@@ -3,6 +3,8 @@ package com.zhuwenhao.demo.utils;
 import android.content.Context;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class AppUtils {
 
     /**
@@ -46,27 +48,28 @@ public class AppUtils {
      * @return B KB MB GB
      */
     public static String conversionByte(long size) {
+        float b = size;
+        DecimalFormat format = new DecimalFormat("#.00");
+
         //B
-        if (size < 1024) {
-            return String.valueOf(size) + "B";
+        if (b < 1024) {
+            return format.format(b).replace(".00", "") + "B";
         } else {
-            size = size / 1024;
+            b = b / 1024;
         }
 
         //KB
-        if (size < 1024) {
-            return String.valueOf(size) + "KB";
+        if (b < 1024) {
+            return format.format(b).replace(".00", "") + "KB";
         } else {
-            size = size / 1024;
+            b = b / 1024;
         }
 
         //MB
-        if (size < 1024) {
-            size = size * 100;
-            return String.valueOf(size / 100) + "." + String.valueOf(size % 100) + "MB";
+        if (b < 1024) {
+            return format.format(b).replace(".00", "") + "MB";
         } else {
-            size = size * 100 / 1024;
-            return String.valueOf(size / 100) + "." + String.valueOf(size % 100) + "GB";
+            return format.format(b / 1024).replace(".00", "") + "GB";
         }
     }
 }
