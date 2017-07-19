@@ -17,9 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.zhuwenhao.demo.adapter.ViewPagerAdapter;
+import com.zhuwenhao.demo.fragment.DeviceInfoFragment;
 import com.zhuwenhao.demo.fragment.Fragment1;
 import com.zhuwenhao.demo.fragment.Fragment2;
-import com.zhuwenhao.demo.fragment.Fragment3;
 import com.zhuwenhao.demo.utils.Constants;
 
 import java.util.ArrayList;
@@ -81,9 +81,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         List<String> titles = new ArrayList<>();
-        titles.add("One");
-        titles.add("Two");
-        titles.add("Three");
+        titles.add(getString(R.string.one));
+        titles.add(getString(R.string.two));
+        titles.add(getString(R.string.device_info));
         for (String title : titles) {
             tabLayout.addTab(tabLayout.newTab().setText(title));
         }
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new Fragment1());
         fragmentList.add(new Fragment2());
-        fragmentList.add(new Fragment3());
+        fragmentList.add(new DeviceInfoFragment());
 
         viewPager.setOffscreenPageLimit(2);
 

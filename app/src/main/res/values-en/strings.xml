@@ -3,6 +3,10 @@
     <string name="bandwagon">Bandwagon</string>
     <string name="subway">Subway</string>
 
+    <string name="one">One</string>
+    <string name="two">Two</string>
+    <string name="device_info">Device Info</string>
+
     <string name="empty">This is empty</string>
     <string name="error">Failed to load</string>
     <string name="no_network">No network connection</string>

@@ -9,6 +9,10 @@
     <string name="bandwagon">搬瓦工</string>
     <string name="subway">地铁图</string>
 
+    <string name="one">One</string>
+    <string name="two">Two</string>
+    <string name="device_info">设备信息</string>
+
     <string name="empty">这里空空的</string>
     <string name="error">加载失败</string>
     <string name="no_network">网络异常</string>
