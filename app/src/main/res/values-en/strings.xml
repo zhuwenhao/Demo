@@ -45,4 +45,15 @@
     <string name="copy_url">Copy url</string>
     <string name="open_in_browser">Open in browser</string>
     <string name="copy_success">Copy success</string>
+
+    <string name="hardware_info">Hardware Info</string>
+    <string name="model">Model</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="board">Board</string>
+    <string name="device">Device</string>
+    <string name="product">Product</string>
+    <string name="system_info">System Info</string>
+    <string name="android_version">Android version</string>
+    <string name="code_name">Code name</string>
+    <string name="api_level">API level</string>
 </resources>

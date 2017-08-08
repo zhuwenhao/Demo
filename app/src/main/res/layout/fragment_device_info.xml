@@ -3,18 +3,149 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="888dp" />
+        <TableRow>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="233dp"
-            android:background="@color/colorDivider" />
-    </LinearLayout>
+            <TextView
+                android:text="@string/hardware_info"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/model"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_model"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/manufacturer"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_manufacturer"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/board"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_board"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/device"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_device"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/product"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_product"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="16dp">
+
+            <TextView
+                android:text="@string/system_info"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/android_version"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_android_version"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/code_name"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_code_name"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/api_level"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_api_level"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+    </TableLayout>
 </android.support.v4.widget.NestedScrollView>

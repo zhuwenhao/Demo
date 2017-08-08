@@ -54,4 +54,15 @@
     <string name="copy_url">复制链接地址</string>
     <string name="open_in_browser">在浏览器中打开</string>
     <string name="copy_success">复制成功</string>
+
+    <string name="hardware_info">硬件信息</string>
+    <string name="model">型号</string>
+    <string name="manufacturer">制造商</string>
+    <string name="board">主板</string>
+    <string name="device">设备</string>
+    <string name="product">产品</string>
+    <string name="system_info">系统信息</string>
+    <string name="android_version">Android 版本</string>
+    <string name="code_name">代号</string>
+    <string name="api_level">API 级别</string>
 </resources>
