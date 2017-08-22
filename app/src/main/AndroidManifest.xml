@@ -37,6 +37,10 @@
             android:label="@string/bandwagon"
             android:screenOrientation="portrait" />
         <activity android:name=".WebActivity" />
+        <activity
+            android:name=".SolidColorsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.StatusNavigationBar" />
     </application>
 
 </manifest>

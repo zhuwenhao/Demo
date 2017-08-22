@@ -2,6 +2,7 @@
 <resources>
     <string name="bandwagon">Bandwagon</string>
     <string name="subway">Subway</string>
+    <string name="solid_colors">Solid colors</string>
 
     <string name="one">One</string>
     <string name="two">Two</string>
