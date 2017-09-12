@@ -3,6 +3,7 @@ package com.zhuwenhao.demo.fragment;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,18 @@ public class DeviceInfoFragment extends Fragment {
     @BindView(R.id.text_api_level)
     TextView textApiLevel;
 
+    @BindView(R.id.text_resolution)
+    TextView textResolution;
+
+    @BindView(R.id.text_available_resolution)
+    TextView textAvailableResolution;
+
+    @BindView(R.id.text_density)
+    TextView textDensity;
+
+    @BindView(R.id.text_exact_density)
+    TextView textExactDensity;
+
     Unbinder unbinder;
 
     @Override
@@ -65,6 +78,14 @@ public class DeviceInfoFragment extends Fragment {
         textAndroidVersion.setText(Build.VERSION.RELEASE);
         textCodeName.setText(getCodeName());
         textApiLevel.setText(String.valueOf(Build.VERSION.SDK_INT));
+
+        DisplayMetrics dm = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getRealMetrics(dm);
+        textResolution.setText(dm.widthPixels + " x " + dm.heightPixels + " px");
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        textAvailableResolution.setText(dm.widthPixels + " x " + dm.heightPixels + " px");
+        textDensity.setText(String.valueOf(dm.densityDpi + " dp"));
+        textExactDensity.setText(dm.xdpi + " x " + dm.ydpi + " dp");
     }
 
     private String getCodeName() {
@@ -77,6 +98,8 @@ public class DeviceInfoFragment extends Fragment {
             case 24:
             case 25:
                 return "Nougat";
+            case 26:
+                return "Oreo";
             default:
                 return "";
         }

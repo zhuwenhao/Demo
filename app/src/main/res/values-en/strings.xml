@@ -57,4 +57,9 @@
     <string name="android_version">Android version</string>
     <string name="code_name">Code name</string>
     <string name="api_level">API level</string>
+    <string name="screen_info">Screen Info</string>
+    <string name="resolution">Resolution</string>
+    <string name="available_resolution">Available Resolution</string>
+    <string name="density">Density</string>
+    <string name="exact_density">Exact Density</string>
 </resources>

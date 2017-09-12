@@ -66,4 +66,9 @@
     <string name="android_version">Android 版本</string>
     <string name="code_name">代号</string>
     <string name="api_level">API 级别</string>
+    <string name="screen_info">屏幕信息</string>
+    <string name="resolution">分辨率</string>
+    <string name="available_resolution">可用分辨率</string>
+    <string name="density">密度</string>
+    <string name="exact_density">精确密度</string>
 </resources>

@@ -147,5 +147,74 @@
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
+
+        <TableRow android:layout_marginTop="16dp">
+
+            <TextView
+                android:text="@string/screen_info"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/resolution"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_resolution"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/available_resolution"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_available_resolution"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/density"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_density"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/exact_density"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_exact_density"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
     </TableLayout>
 </android.support.v4.widget.NestedScrollView>
