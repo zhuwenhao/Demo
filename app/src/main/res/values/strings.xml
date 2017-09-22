@@ -30,7 +30,7 @@
     <string name="vm_type">主机类型</string>
     <string name="node_location">所在地</string>
     <string name="os">操作系统</string>
-    <string name="ip_addresses">IP地址</string>
+    <string name="ip_address">IP地址</string>
     <string name="ssh_port">SSH端口</string>
     <string name="status">状态</string>
     <string name="cpu_load">CPU负载</string>
@@ -71,4 +71,10 @@
     <string name="available_resolution">可用分辨率</string>
     <string name="density">密度</string>
     <string name="exact_density">精确密度</string>
+    <string name="network_info">网络信息</string>
+    <string name="network_type">网络类型</string>
+    <string name="disconnected">已断开</string>
+    <string name="other">其他</string>
+    <string name="ssid">SSID</string>
+    <string name="mac_address">MAC地址</string>
 </resources>

@@ -1,5 +1,8 @@
 package com.zhuwenhao.demo.fragment;
 
+import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zhuwenhao.demo.R;
+import com.zhuwenhao.demo.utils.NetworkUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,6 +57,18 @@ public class DeviceInfoFragment extends Fragment {
     @BindView(R.id.text_exact_density)
     TextView textExactDensity;
 
+    @BindView(R.id.text_network_type)
+    TextView textNetworkType;
+
+    @BindView(R.id.text_ssid)
+    TextView textSSID;
+
+    @BindView(R.id.text_ip_address)
+    TextView textIpAddress;
+
+    @BindView(R.id.text_mac_address)
+    TextView textMacAddress;
+
     Unbinder unbinder;
 
     @Override
@@ -86,6 +102,30 @@ public class DeviceInfoFragment extends Fragment {
         textAvailableResolution.setText(dm.widthPixels + " x " + dm.heightPixels + " px");
         textDensity.setText(String.valueOf(dm.densityDpi + " dp"));
         textExactDensity.setText(dm.xdpi + " x " + dm.ydpi + " dp");
+
+        textNetworkType.setText(NetworkUtils.formatNetworkType(getContext()));
+        switch (NetworkUtils.getNetworkType(getContext())) {
+            case NetworkUtils.TYPE_NONE:
+            case NetworkUtils.TYPE_OTHER:
+                getActivity().findViewById(R.id.row_ssid).setVisibility(View.GONE);
+                getActivity().findViewById(R.id.row_ip_address).setVisibility(View.GONE);
+                getActivity().findViewById(R.id.row_mac_address).setVisibility(View.GONE);
+                break;
+            case NetworkUtils.TYPE_WIFI:
+                WifiManager wifiManager = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE);
+                WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+                textSSID.setText(wifiInfo.getSSID().replace("\"", ""));
+                textIpAddress.setText(NetworkUtils.formatIpAddress(wifiInfo.getIpAddress()));
+                textMacAddress.setText(NetworkUtils.getMacAddress());
+                break;
+            case NetworkUtils.TYPE_MOBILE:
+            case NetworkUtils.TYPE_MOBILE_2G:
+            case NetworkUtils.TYPE_MOBILE_3G:
+            case NetworkUtils.TYPE_MOBILE_4G:
+                getActivity().findViewById(R.id.row_ssid).setVisibility(View.GONE);
+                // TODO: 2017/9/22 get IP and MAC
+                break;
+        }
     }
 
     private String getCodeName() {

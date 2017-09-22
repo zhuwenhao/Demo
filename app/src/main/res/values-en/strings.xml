@@ -22,7 +22,7 @@
     <string name="vm_type">Type</string>
     <string name="node_location">Node location</string>
     <string name="os">Operating system</string>
-    <string name="ip_addresses">IP address</string>
+    <string name="ip_address">IP address</string>
     <string name="ssh_port">SSH port</string>
     <string name="status">Status</string>
     <string name="cpu_load">CPU load</string>
@@ -59,7 +59,12 @@
     <string name="api_level">API level</string>
     <string name="screen_info">Screen Info</string>
     <string name="resolution">Resolution</string>
-    <string name="available_resolution">Available Resolution</string>
+    <string name="available_resolution">Available resolution</string>
     <string name="density">Density</string>
-    <string name="exact_density">Exact Density</string>
+    <string name="exact_density">Exact density</string>
+    <string name="network_info">Network Info</string>
+    <string name="network_type">Network type</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="other">Other</string>
+    <string name="mac_address">MAC address</string>
 </resources>

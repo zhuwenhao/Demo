@@ -6,9 +6,7 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp"
-        android:paddingTop="16dp">
+        android:padding="16dp">
 
         <TableRow>
 
@@ -213,6 +211,81 @@
 
             <TextView
                 android:id="@+id/text_exact_density"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="16dp">
+
+            <TextView
+                android:text="@string/network_info"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/network_type"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_network_type"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_ssid"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/ssid"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_ssid"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_ip_address"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/ip_address"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_ip_address"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_mac_address"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                android:text="@string/mac_address"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_mac_address"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
