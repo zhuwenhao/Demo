@@ -131,6 +131,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_solid_colors:
                 startActivity(new Intent(this, SolidColorsActivity.class));
                 break;
+            case R.id.nav_nfc:
+                startActivity(new Intent(this, NfcActivity.class));
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

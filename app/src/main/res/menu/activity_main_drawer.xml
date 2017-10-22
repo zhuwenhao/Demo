@@ -17,5 +17,10 @@
             android:id="@+id/nav_solid_colors"
             android:icon="@drawable/ic_palette"
             android:title="@string/solid_colors" />
+
+        <item
+            android:id="@+id/nav_nfc"
+            android:icon="@drawable/ic_nfc"
+            android:title="@string/nfc" />
     </group>
 </menu>
