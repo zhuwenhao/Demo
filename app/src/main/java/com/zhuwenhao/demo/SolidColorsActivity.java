@@ -61,7 +61,7 @@ public class SolidColorsActivity extends AppCompatActivity implements ColorChoos
                 new ColorChooserDialog.Builder(this, R.string.solid_colors)
                         .titleSub(R.string.solid_colors)
                         .preselect(DialogUtils.resolveColor(this, R.attr.colorPrimary))
-                        .show();
+                        .show(this);
                 break;
         }
     }
