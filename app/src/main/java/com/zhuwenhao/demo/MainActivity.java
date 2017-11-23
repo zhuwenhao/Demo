@@ -14,7 +14,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.zhuwenhao.demo.adapter.ViewPagerAdapter;
 import com.zhuwenhao.demo.fragment.DeviceInfoFragment;
@@ -39,16 +38,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
-    @BindView(R.id.layout_welcome)
-    View layoutWelcome;
-
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
 
     @BindView(R.id.view_pager)
     ViewPager viewPager;
-
-    private static boolean isShowWelcome = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,19 +60,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-
-        if (isShowWelcome) {
-            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-            layoutWelcome.setVisibility(View.VISIBLE);
-            layoutWelcome.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                    layoutWelcome.setVisibility(View.GONE);
-                    isShowWelcome = false;
-                }
-            }, 2333);
-        }
 
         List<String> titles = new ArrayList<>();
         titles.add(getString(R.string.one));
@@ -143,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        } else if (!isShowWelcome) {
+        } else {
             super.onBackPressed();
         }
     }
