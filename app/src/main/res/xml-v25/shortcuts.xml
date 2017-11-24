@@ -3,7 +3,7 @@
 
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_computer"
+        android:icon="@drawable/ic_computer_shortcut"
         android:shortcutDisabledMessage="@string/bandwagon"
         android:shortcutId="bandwagon"
         android:shortcutLongLabel="@string/bandwagon"
@@ -17,7 +17,7 @@
 
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_subway"
+        android:icon="@drawable/ic_subway_shortcut"
         android:shortcutDisabledMessage="@string/subway"
         android:shortcutId="subway"
         android:shortcutLongLabel="@string/subway"
