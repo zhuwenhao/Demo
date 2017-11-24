@@ -97,11 +97,11 @@ public class DeviceInfoFragment extends Fragment {
 
         DisplayMetrics dm = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getRealMetrics(dm);
-        textResolution.setText(dm.widthPixels + " x " + dm.heightPixels + " px");
+        textResolution.setText(String.valueOf(dm.widthPixels + " x " + dm.heightPixels + " px"));
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        textAvailableResolution.setText(dm.widthPixels + " x " + dm.heightPixels + " px");
+        textAvailableResolution.setText(String.valueOf(dm.widthPixels + " x " + dm.heightPixels + " px"));
         textDensity.setText(String.valueOf(dm.densityDpi + " dp"));
-        textExactDensity.setText(dm.xdpi + " x " + dm.ydpi + " dp");
+        textExactDensity.setText(String.valueOf(dm.xdpi + " x " + dm.ydpi + " dp"));
 
         textNetworkType.setText(NetworkUtils.formatNetworkType(getContext()));
         switch (NetworkUtils.getNetworkType(getContext())) {
@@ -113,9 +113,11 @@ public class DeviceInfoFragment extends Fragment {
                 break;
             case NetworkUtils.TYPE_WIFI:
                 WifiManager wifiManager = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE);
-                WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-                textSSID.setText(wifiInfo.getSSID().replace("\"", ""));
-                textIpAddress.setText(NetworkUtils.formatIpAddress(wifiInfo.getIpAddress()));
+                if (wifiManager != null) {
+                    WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+                    textSSID.setText(wifiInfo.getSSID().replace("\"", ""));
+                    textIpAddress.setText(NetworkUtils.formatIpAddress(wifiInfo.getIpAddress())); //textIpAddress.setText(NetworkUtils.getIpAddress()); 效果一样
+                }
                 textMacAddress.setText(NetworkUtils.getMacAddress());
                 break;
             case NetworkUtils.TYPE_MOBILE:
@@ -123,7 +125,8 @@ public class DeviceInfoFragment extends Fragment {
             case NetworkUtils.TYPE_MOBILE_3G:
             case NetworkUtils.TYPE_MOBILE_4G:
                 getActivity().findViewById(R.id.row_ssid).setVisibility(View.GONE);
-                // TODO: 2017/9/22 get IP and MAC
+                textIpAddress.setText(NetworkUtils.getIpAddress());
+                textMacAddress.setText(NetworkUtils.getMacAddress());
                 break;
         }
     }

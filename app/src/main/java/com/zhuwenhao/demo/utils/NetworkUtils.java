@@ -8,11 +8,14 @@ import android.telephony.TelephonyManager;
 import com.zhuwenhao.demo.R;
 
 import java.math.BigInteger;
+import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.nio.ByteOrder;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.List;
 
 public class NetworkUtils {
@@ -39,6 +42,8 @@ public class NetworkUtils {
      */
     public static boolean isNetworkConnected(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager == null)
+            return false;
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isAvailable();
     }
@@ -52,6 +57,8 @@ public class NetworkUtils {
      */
     public static int getNetworkType(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager == null)
+            return TYPE_NONE;
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isAvailable()) {
             if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
@@ -143,6 +150,28 @@ public class NetworkUtils {
             ipAddressString = null;
         }
         return ipAddressString;
+    }
+
+    /**
+     * 获取IP地址
+     *
+     * @return String
+     */
+    public static String getIpAddress() {
+        try {
+            for (Enumeration<NetworkInterface> enumeration = NetworkInterface.getNetworkInterfaces(); enumeration.hasMoreElements(); ) {
+                NetworkInterface networkInterface = enumeration.nextElement();
+                for (Enumeration<InetAddress> enumIpAddress = networkInterface.getInetAddresses(); enumIpAddress.hasMoreElements(); ) {
+                    InetAddress inetAddress = enumIpAddress.nextElement();
+                    if (!inetAddress.isLoopbackAddress() && inetAddress instanceof Inet4Address) {
+                        return inetAddress.getHostAddress();
+                    }
+                }
+            }
+        } catch (SocketException e) {
+            return "";
+        }
+        return "";
     }
 
     /**
