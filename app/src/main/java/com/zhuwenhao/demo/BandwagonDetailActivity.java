@@ -180,14 +180,43 @@ public class BandwagonDetailActivity extends AppCompatActivity {
                         textOs.setText(bandwagonInfo.getOs());
                         textIpAddresses.setText(bandwagonInfo.getIpAddresses());
                         textSshPort.setText(bandwagonInfo.getSshPort());
-                        textStatus.setText(AppUtils.firstLetterToUpper(bandwagonInfo.getBandwagonStatus().getStatus()));
-                        textCpuLoad.setText(bandwagonInfo.getBandwagonStatus().getNpRoc() + " processes; LA: " + bandwagonInfo.getBandwagonStatus().getLoadAverage());
-                        textTotalRam.setText(AppUtils.conversionByte(bandwagonInfo.getPlanRam()));
-                        textTotalSwap.setText(AppUtils.conversionByte(bandwagonInfo.getPlanSwap()));
-                        textTotalDisk.setText(AppUtils.conversionByte(bandwagonInfo.getPlanDisk()));
+
+                        if (bandwagonInfo.getVmType().equals("ovz")) {
+                            textStatus.setText(AppUtils.firstLetterToUpper(bandwagonInfo.getBandwagonStatus().getStatus()));
+                            textCpuLoad.setText(String.valueOf(bandwagonInfo.getBandwagonStatus().getNpRoc() + " processes; LA: " + bandwagonInfo.getBandwagonStatus().getLoadAverage()));
+
+                            textUsedRam.setText(AppUtils.conversionByte(bandwagonInfo.getBandwagonStatus().getUsedRam()));
+                            textTotalRam.setText(AppUtils.conversionByte(bandwagonInfo.getPlanRam()));
+                            pbRam.setProgress((int) (bandwagonInfo.getBandwagonStatus().getUsedRam() / (float) bandwagonInfo.getPlanRam() * 100));
+
+                            textUsedSwap.setText(AppUtils.conversionByte(bandwagonInfo.getBandwagonStatus().getUsedSwap()));
+                            textTotalSwap.setText(AppUtils.conversionByte(bandwagonInfo.getPlanSwap()));
+                            pbSwap.setProgress((int) (bandwagonInfo.getBandwagonStatus().getUsedSwap() / (float) bandwagonInfo.getPlanSwap() * 100));
+
+                            textUsedDisk.setText(AppUtils.conversionByte(bandwagonInfo.getBandwagonQuota().getOccupiedB()));
+                            textTotalDisk.setText(AppUtils.conversionByte(bandwagonInfo.getPlanDisk()));
+                            pbDisk.setProgress((int) (bandwagonInfo.getBandwagonQuota().getOccupiedB() / (float) bandwagonInfo.getPlanDisk() * 100));
+                        } else {
+                            textStatus.setText(bandwagonInfo.getVeStatus());
+                            textCpuLoad.setText(String.valueOf("LA: " + bandwagonInfo.getLoadAverage()));
+
+                            textUsedRam.setText(AppUtils.conversionByte(bandwagonInfo.getPlanRam() - bandwagonInfo.getMemAvailableB()));
+                            textTotalRam.setText(AppUtils.conversionByte(bandwagonInfo.getPlanRam()));
+                            pbRam.setProgress((int) ((bandwagonInfo.getPlanRam() - bandwagonInfo.getMemAvailableB()) / (float) bandwagonInfo.getPlanRam() * 100));
+
+                            textUsedSwap.setText(AppUtils.conversionByte(bandwagonInfo.getSwapTotalB() - bandwagonInfo.getSwapAvailableB()));
+                            textTotalSwap.setText(AppUtils.conversionByte(bandwagonInfo.getSwapTotalB()));
+                            pbSwap.setProgress((int) ((bandwagonInfo.getSwapTotalB() - bandwagonInfo.getSwapAvailableB()) / (float) bandwagonInfo.getSwapTotalB() * 100));
+
+                            textUsedDisk.setText(AppUtils.conversionByte(bandwagonInfo.getVeUsedDiskSpaceB()));
+                            textTotalDisk.setText(AppUtils.conversionByte(bandwagonInfo.getPlanDisk()));
+                            pbDisk.setProgress((int) (bandwagonInfo.getVeUsedDiskSpaceB() / (float) bandwagonInfo.getPlanDisk() * 100));
+                        }
+
                         textUsedData.setText(AppUtils.conversionByte(bandwagonInfo.getDataCounter()));
                         textTotalData.setText(AppUtils.conversionByte(bandwagonInfo.getPlanMonthlyData()));
                         pbData.setProgress((int) (bandwagonInfo.getDataCounter() / (float) bandwagonInfo.getPlanMonthlyData() * 100));
+
                         textResets.setText(String.format(getResources().getString(R.string.resets), new DateTime(bandwagonInfo.getDataNextReset() * 1000).toString("yyyy-MM-dd")));
 
                         bandwagon.setBandwagonInfo(bandwagonInfo);

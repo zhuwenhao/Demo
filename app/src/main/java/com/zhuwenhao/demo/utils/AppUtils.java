@@ -49,7 +49,7 @@ public class AppUtils {
      */
     public static String conversionByte(long size) {
         float b = size;
-        DecimalFormat format = new DecimalFormat("#.00");
+        DecimalFormat format = new DecimalFormat("0.00");
 
         //B
         if (b < 1024) {

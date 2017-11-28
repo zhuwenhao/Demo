@@ -12,6 +12,9 @@ public class BandwagonInfo implements Serializable {
     @SerializedName("vz_status")
     private BandwagonStatus bandwagonStatus;
 
+    @SerializedName("ve_status")
+    private String veStatus;
+
     @SerializedName("vz_quota")
     private BandwagonQuota bandwagonQuota;
 
@@ -20,6 +23,9 @@ public class BandwagonInfo implements Serializable {
 
     @SerializedName("ssh_port")
     private String sshPort;
+
+    @SerializedName("load_average")
+    private String loadAverage;
 
     private String hostname;
 
@@ -70,6 +76,18 @@ public class BandwagonInfo implements Serializable {
 
     private boolean suspended;
 
+    @SerializedName("mem_available_kb")
+    private long memAvailableB;
+
+    @SerializedName("swap_total_kb")
+    private long swapTotalB;
+
+    @SerializedName("swap_available_kb")
+    private long swapAvailableB;
+
+    @SerializedName("ve_used_disk_space_b")
+    private long veUsedDiskSpaceB;
+
     private int error;
 
     private String message;
@@ -96,6 +114,14 @@ public class BandwagonInfo implements Serializable {
         this.bandwagonStatus = bandwagonStatus;
     }
 
+    public String getVeStatus() {
+        return veStatus;
+    }
+
+    public void setVeStatus(String veStatus) {
+        this.veStatus = veStatus;
+    }
+
     public BandwagonQuota getBandwagonQuota() {
         return bandwagonQuota;
     }
@@ -118,6 +144,14 @@ public class BandwagonInfo implements Serializable {
 
     public void setSshPort(String sshPort) {
         this.sshPort = sshPort;
+    }
+
+    public String getLoadAverage() {
+        return loadAverage;
+    }
+
+    public void setLoadAverage(String loadAverage) {
+        this.loadAverage = loadAverage;
     }
 
     public String getHostname() {
@@ -277,6 +311,38 @@ public class BandwagonInfo implements Serializable {
 
     public void setSuspended(boolean suspended) {
         this.suspended = suspended;
+    }
+
+    public long getMemAvailableB() {
+        return memAvailableB * 1024;
+    }
+
+    public void setMemAvailableB(long memAvailableB) {
+        this.memAvailableB = memAvailableB;
+    }
+
+    public long getSwapTotalB() {
+        return swapTotalB * 1024;
+    }
+
+    public void setSwapTotalB(long swapTotalB) {
+        this.swapTotalB = swapTotalB;
+    }
+
+    public long getSwapAvailableB() {
+        return swapAvailableB * 1024;
+    }
+
+    public void setSwapAvailableB(long swapAvailableB) {
+        this.swapAvailableB = swapAvailableB;
+    }
+
+    public long getVeUsedDiskSpaceB() {
+        return veUsedDiskSpaceB;
+    }
+
+    public void setVeUsedDiskSpaceB(long veUsedDiskSpaceB) {
+        this.veUsedDiskSpaceB = veUsedDiskSpaceB;
     }
 
     public int getError() {

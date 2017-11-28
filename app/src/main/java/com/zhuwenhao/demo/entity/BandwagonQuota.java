@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class BandwagonQuota implements Serializable {
 
     @SerializedName("occupied_kb")
-    private long occupiedKb;
+    private long occupiedB;
 
     @SerializedName("softlimit_kb")
     private long softLimitKb;
@@ -24,12 +24,12 @@ public class BandwagonQuota implements Serializable {
     @SerializedName("hardlimit_inodes")
     private String hardLimitINodes;
 
-    public long getOccupiedKb() {
-        return occupiedKb;
+    public long getOccupiedB() {
+        return occupiedB * 1024;
     }
 
-    public void setOccupiedKb(long occupiedKb) {
-        this.occupiedKb = occupiedKb;
+    public void setOccupiedB(long occupiedB) {
+        this.occupiedB = occupiedB;
     }
 
     public long getSoftLimitKb() {

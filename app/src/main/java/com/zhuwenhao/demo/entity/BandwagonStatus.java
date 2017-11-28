@@ -32,7 +32,7 @@ public class BandwagonStatus implements Serializable {
     private String priVvmPagesB;
 
     @SerializedName("oomguarpages")
-    private String oomguarPages;
+    private long oomguarPages;
 
     @SerializedName("oomguarpages_b")
     private String oomguarPagesB;
@@ -50,7 +50,7 @@ public class BandwagonStatus implements Serializable {
     private String numFileB;
 
     @SerializedName("swappages")
-    private String swapPages;
+    private long swapPages;
 
     @SerializedName("swappages_b")
     private String swapPagesB;
@@ -133,11 +133,15 @@ public class BandwagonStatus implements Serializable {
         this.priVvmPagesB = priVvmPagesB;
     }
 
-    public String getOomguarPages() {
+    public long getOomguarPages() {
         return oomguarPages;
     }
 
-    public void setOomguarPages(String oomguarPages) {
+    public long getUsedRam() {
+        return oomguarPages * 4 * 1024;
+    }
+
+    public void setOomguarPages(long oomguarPages) {
         this.oomguarPages = oomguarPages;
     }
 
@@ -181,11 +185,15 @@ public class BandwagonStatus implements Serializable {
         this.numFileB = numFileB;
     }
 
-    public String getSwapPages() {
+    public long getSwapPages() {
         return swapPages;
     }
 
-    public void setSwapPages(String swapPages) {
+    public long getUsedSwap() {
+        return swapPages * 4 * 1024;
+    }
+
+    public void setSwapPages(long swapPages) {
         this.swapPages = swapPages;
     }
 
