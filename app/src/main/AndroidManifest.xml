@@ -40,10 +40,6 @@
             android:screenOrientation="portrait" />
         <activity android:name=".WebActivity" />
         <activity
-            android:name=".SolidColorsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar.StatusNavigationBar" />
-        <activity
             android:name=".NfcActivity"
             android:label="@string/nfc"
             android:screenOrientation="portrait" />

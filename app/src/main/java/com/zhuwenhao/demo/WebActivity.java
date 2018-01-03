@@ -117,8 +117,10 @@ public class WebActivity extends AppCompatActivity {
                 break;
             case R.id.menu_copy_url:
                 ClipboardManager manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                manager.setPrimaryClip(ClipData.newPlainText(null, url));
-                Snackbar.make(webView, R.string.copy_success, Snackbar.LENGTH_SHORT).show();
+                if (manager != null) {
+                    manager.setPrimaryClip(ClipData.newPlainText(null, url));
+                    Snackbar.make(webView, R.string.copy_success, Snackbar.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.menu_open_in_browser:
                 Intent intent = new Intent(Intent.ACTION_VIEW);

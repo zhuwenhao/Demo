@@ -109,9 +109,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent.setData(Uri.parse(Constants.SUBWAY_URL_DEFAULT));
                 startActivity(intent);
                 break;
-            case R.id.nav_solid_colors:
-                startActivity(new Intent(this, SolidColorsActivity.class));
-                break;
             case R.id.nav_nfc:
                 startActivity(new Intent(this, NfcActivity.class));
                 break;

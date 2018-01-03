@@ -33,11 +33,6 @@
                 android:id="@+id/menu_reset_root_password"
                 android:title="@string/reset_root_password"
                 app:showAsAction="never" />
-
-            <item
-                android:id="@+id/menu_install_new_os"
-                android:title="@string/install_new_os"
-                app:showAsAction="never" />
         </menu>
     </item>
 </menu>

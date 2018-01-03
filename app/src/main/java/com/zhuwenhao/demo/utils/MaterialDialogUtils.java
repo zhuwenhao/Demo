@@ -1,10 +1,7 @@
 package com.zhuwenhao.demo.utils;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.zhuwenhao.demo.R;
 
@@ -77,36 +74,5 @@ public class MaterialDialogUtils {
                 .onPositive(callback)
                 .negativeText(android.R.string.cancel)
                 .show();
-    }
-
-    public static MaterialDialog showLongListAndConfirmDialog(final Context context, int titleRes, final int contentRes, String[] items, final OnDialogDismissListener listener) {
-        return new MaterialDialog.Builder(context)
-                .title(titleRes)
-                .items((CharSequence[]) items)
-                .itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(final MaterialDialog materialDialog, View itemView, final int position, final CharSequence text) {
-                        showBasicNoTitleDialog(context, String.format(context.getResources().getString(contentRes), text), new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                materialDialog.dismiss();
-                                listener.onDismiss(position, text);
-                            }
-                        });
-                    }
-                })
-                .negativeText(android.R.string.cancel)
-                .onNegative(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        dialog.dismiss();
-                    }
-                })
-                .autoDismiss(false)
-                .show();
-    }
-
-    public interface OnDialogDismissListener {
-        void onDismiss(int position, CharSequence text);
     }
 }

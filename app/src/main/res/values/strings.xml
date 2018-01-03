@@ -8,7 +8,6 @@
 
     <string name="bandwagon">搬瓦工</string>
     <string name="subway">地铁图</string>
-    <string name="solid_colors">纯色</string>
     <string name="nfc">NFC</string>
 
     <string name="one">One</string>
@@ -47,8 +46,6 @@
     <string name="kill">杀死</string>
     <string name="more">更多</string>
     <string name="reset_root_password">重置Root密码</string>
-    <string name="install_new_os">安装新系统</string>
-    <string name="install_new_os_hint">您选择的新系统是：%s</string>
 
     <string name="please_wait">请稍候&#8230;</string>
 

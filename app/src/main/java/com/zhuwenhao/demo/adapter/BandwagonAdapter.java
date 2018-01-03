@@ -86,12 +86,12 @@ public class BandwagonAdapter extends RecyclerView.Adapter<BandwagonAdapter.Band
         BandwagonViewHolder(View itemView) {
             super(itemView);
             view = itemView;
-            textTitle = (TextView) itemView.findViewById(R.id.text_title);
-            edit = (AppCompatImageView) itemView.findViewById(R.id.edit);
-            layoutText = (LinearLayout) itemView.findViewById(R.id.layout_text);
-            textNodeLocation = (TextView) itemView.findViewById(R.id.text_node_location);
-            textOs = (TextView) itemView.findViewById(R.id.text_os);
-            textIpAddresses = (TextView) itemView.findViewById(R.id.text_ip_addresses);
+            textTitle = itemView.findViewById(R.id.text_title);
+            edit = itemView.findViewById(R.id.edit);
+            layoutText = itemView.findViewById(R.id.layout_text);
+            textNodeLocation = itemView.findViewById(R.id.text_node_location);
+            textOs = itemView.findViewById(R.id.text_os);
+            textIpAddresses = itemView.findViewById(R.id.text_ip_addresses);
         }
     }
 

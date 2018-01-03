@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.zhuwenhao.demo.custom.MultipleStatusView;
 import com.zhuwenhao.demo.entity.Bandwagon;
 import com.zhuwenhao.demo.entity.BandwagonInfo;
-import com.zhuwenhao.demo.entity.BandwagonOS;
 import com.zhuwenhao.demo.utils.AppUtils;
 import com.zhuwenhao.demo.utils.Constants;
 import com.zhuwenhao.demo.utils.DatabaseUtils;
@@ -193,20 +192,20 @@ public class BandwagonDetailActivity extends AppCompatActivity {
                             textTotalSwap.setText(AppUtils.conversionByte(bandwagonInfo.getPlanSwap()));
                             pbSwap.setProgress((int) (bandwagonInfo.getBandwagonStatus().getUsedSwap() / (float) bandwagonInfo.getPlanSwap() * 100));
 
-                            textUsedDisk.setText(AppUtils.conversionByte(bandwagonInfo.getBandwagonQuota().getOccupiedB()));
+                            textUsedDisk.setText(AppUtils.conversionByte(bandwagonInfo.getBandwagonQuota().getOccupiedKB()));
                             textTotalDisk.setText(AppUtils.conversionByte(bandwagonInfo.getPlanDisk()));
-                            pbDisk.setProgress((int) (bandwagonInfo.getBandwagonQuota().getOccupiedB() / (float) bandwagonInfo.getPlanDisk() * 100));
+                            pbDisk.setProgress((int) (bandwagonInfo.getBandwagonQuota().getOccupiedKB() / (float) bandwagonInfo.getPlanDisk() * 100));
                         } else {
                             textStatus.setText(bandwagonInfo.getVeStatus());
                             textCpuLoad.setText(String.valueOf("LA: " + bandwagonInfo.getLoadAverage()));
 
-                            textUsedRam.setText(AppUtils.conversionByte(bandwagonInfo.getPlanRam() - bandwagonInfo.getMemAvailableB()));
+                            textUsedRam.setText(AppUtils.conversionByte(bandwagonInfo.getPlanRam() - bandwagonInfo.getMemAvailableKB()));
                             textTotalRam.setText(AppUtils.conversionByte(bandwagonInfo.getPlanRam()));
-                            pbRam.setProgress((int) ((bandwagonInfo.getPlanRam() - bandwagonInfo.getMemAvailableB()) / (float) bandwagonInfo.getPlanRam() * 100));
+                            pbRam.setProgress((int) ((bandwagonInfo.getPlanRam() - bandwagonInfo.getMemAvailableKB()) / (float) bandwagonInfo.getPlanRam() * 100));
 
-                            textUsedSwap.setText(AppUtils.conversionByte(bandwagonInfo.getSwapTotalB() - bandwagonInfo.getSwapAvailableB()));
-                            textTotalSwap.setText(AppUtils.conversionByte(bandwagonInfo.getSwapTotalB()));
-                            pbSwap.setProgress((int) ((bandwagonInfo.getSwapTotalB() - bandwagonInfo.getSwapAvailableB()) / (float) bandwagonInfo.getSwapTotalB() * 100));
+                            textUsedSwap.setText(AppUtils.conversionByte(bandwagonInfo.getSwapTotalKB() - bandwagonInfo.getSwapAvailableKB()));
+                            textTotalSwap.setText(AppUtils.conversionByte(bandwagonInfo.getSwapTotalKB()));
+                            pbSwap.setProgress((int) ((bandwagonInfo.getSwapTotalKB() - bandwagonInfo.getSwapAvailableKB()) / (float) bandwagonInfo.getSwapTotalKB() * 100));
 
                             textUsedDisk.setText(AppUtils.conversionByte(bandwagonInfo.getVeUsedDiskSpaceB()));
                             textTotalDisk.setText(AppUtils.conversionByte(bandwagonInfo.getPlanDisk()));
@@ -295,49 +294,6 @@ public class BandwagonDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void getAvailableOS() {
-        if (!NetworkUtils.isNetworkConnected(this)) {
-            AppUtils.showToast(this, R.string.no_network);
-            return;
-        }
-
-        final MaterialDialog dialog = MaterialDialogUtils.showProgressDialog(this, false);
-
-        String url = Constants.BANDWAGON_URL_API + "getAvailableOS";
-        OkHttpUtils.post().url(url)
-                .addParams("veid", bandwagon.getVeId())
-                .addParams("api_key", bandwagon.getApiKey())
-                .build().execute(new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e, int id) {
-                dialog.dismiss();
-                AppUtils.showToast(context, e.getMessage());
-            }
-
-            @Override
-            public void onResponse(String response, int id) {
-                dialog.dismiss();
-
-                try {
-                    Gson gson = new Gson();
-                    BandwagonOS bandwagonOS = gson.fromJson(response, BandwagonOS.class);
-                    if (bandwagonOS.getError() == 0) {
-                        MaterialDialogUtils.showLongListAndConfirmDialog(context, R.string.install_new_os, R.string.install_new_os_hint, bandwagonOS.getTemplates(), new MaterialDialogUtils.OnDialogDismissListener() {
-                            @Override
-                            public void onDismiss(int position, CharSequence text) {
-                                AppUtils.showToast(context, text);
-                            }
-                        });
-                    } else {
-                        AppUtils.showToast(context, bandwagonOS.getMessage());
-                    }
-                } catch (Exception e) {
-                    AppUtils.showToast(context, e.getMessage());
-                }
-            }
-        });
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -359,9 +315,6 @@ public class BandwagonDetailActivity extends AppCompatActivity {
                 break;
             case R.id.menu_reset_root_password:
 
-                break;
-            case R.id.menu_install_new_os:
-                getAvailableOS();
                 break;
         }
         return super.onOptionsItemSelected(item);

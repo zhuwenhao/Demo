@@ -7,68 +7,13 @@ import java.io.Serializable;
 public class BandwagonQuota implements Serializable {
 
     @SerializedName("occupied_kb")
-    private long occupiedB;
+    private long occupiedKB;
 
-    @SerializedName("softlimit_kb")
-    private long softLimitKb;
-
-    @SerializedName("hardlimit_kb")
-    private long hardLimitKb;
-
-    @SerializedName("occupied_inodes")
-    private String occupiedINodes;
-
-    @SerializedName("softlimit_inodes")
-    private String softLimitINodes;
-
-    @SerializedName("hardlimit_inodes")
-    private String hardLimitINodes;
-
-    public long getOccupiedB() {
-        return occupiedB * 1024;
+    public long getOccupiedKB() {
+        return occupiedKB * 1024;
     }
 
-    public void setOccupiedB(long occupiedB) {
-        this.occupiedB = occupiedB;
-    }
-
-    public long getSoftLimitKb() {
-        return softLimitKb;
-    }
-
-    public void setSoftLimitKb(long softLimitKb) {
-        this.softLimitKb = softLimitKb;
-    }
-
-    public long getHardLimitKb() {
-        return hardLimitKb;
-    }
-
-    public void setHardLimitKb(long hardLimitKb) {
-        this.hardLimitKb = hardLimitKb;
-    }
-
-    public String getOccupiedINodes() {
-        return occupiedINodes;
-    }
-
-    public void setOccupiedINodes(String occupiedINodes) {
-        this.occupiedINodes = occupiedINodes;
-    }
-
-    public String getSoftLimitINodes() {
-        return softLimitINodes;
-    }
-
-    public void setSoftLimitINodes(String softLimitINodes) {
-        this.softLimitINodes = softLimitINodes;
-    }
-
-    public String getHardLimitINodes() {
-        return hardLimitINodes;
-    }
-
-    public void setHardLimitINodes(String hardLimitINodes) {
-        this.hardLimitINodes = hardLimitINodes;
+    public void setOccupiedKB(long occupiedKB) {
+        this.occupiedKB = occupiedKB;
     }
 }

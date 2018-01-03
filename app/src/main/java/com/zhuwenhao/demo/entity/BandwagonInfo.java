@@ -18,9 +18,6 @@ public class BandwagonInfo implements Serializable {
     @SerializedName("vz_quota")
     private BandwagonQuota bandwagonQuota;
 
-    @SerializedName("is_cpu_throttled")
-    private String isCpuThrottled;
-
     @SerializedName("ssh_port")
     private String sshPort;
 
@@ -29,19 +26,8 @@ public class BandwagonInfo implements Serializable {
 
     private String hostname;
 
-    @SerializedName("node_ip")
-    private String nodeIp;
-
-    @SerializedName("node_alias")
-    private String nodeAlias;
-
     @SerializedName("node_location")
     private String nodeLocation;
-
-    @SerializedName("location_ipv6_ready")
-    private boolean locationIpv6Ready;
-
-    private String plan;
 
     @SerializedName("plan_monthly_data")
     private long planMonthlyData;
@@ -55,12 +41,7 @@ public class BandwagonInfo implements Serializable {
     @SerializedName("plan_swap")
     private long planSwap;
 
-    @SerializedName("plan_max_ipv6s")
-    private int planMaxIpv6s;
-
     private String os;
-
-    private String email;
 
     @SerializedName("data_counter")
     private long dataCounter;
@@ -71,19 +52,14 @@ public class BandwagonInfo implements Serializable {
     @SerializedName("ip_addresses")
     private String[] ipAddresses;
 
-    @SerializedName("rdns_api_available")
-    private boolean rdnsApiAvailable;
-
-    private boolean suspended;
-
     @SerializedName("mem_available_kb")
-    private long memAvailableB;
+    private long memAvailableKB;
 
     @SerializedName("swap_total_kb")
-    private long swapTotalB;
+    private long swapTotalKB;
 
     @SerializedName("swap_available_kb")
-    private long swapAvailableB;
+    private long swapAvailableKB;
 
     @SerializedName("ve_used_disk_space_b")
     private long veUsedDiskSpaceB;
@@ -130,14 +106,6 @@ public class BandwagonInfo implements Serializable {
         this.bandwagonQuota = bandwagonQuota;
     }
 
-    public String getIsCpuThrottled() {
-        return isCpuThrottled;
-    }
-
-    public void setIsCpuThrottled(String isCpuThrottled) {
-        this.isCpuThrottled = isCpuThrottled;
-    }
-
     public String getSshPort() {
         return sshPort;
     }
@@ -162,44 +130,12 @@ public class BandwagonInfo implements Serializable {
         this.hostname = hostname;
     }
 
-    public String getNodeIp() {
-        return nodeIp;
-    }
-
-    public void setNodeIp(String nodeIp) {
-        this.nodeIp = nodeIp;
-    }
-
-    public String getNodeAlias() {
-        return nodeAlias;
-    }
-
-    public void setNodeAlias(String nodeAlias) {
-        this.nodeAlias = nodeAlias;
-    }
-
     public String getNodeLocation() {
         return nodeLocation;
     }
 
     public void setNodeLocation(String nodeLocation) {
         this.nodeLocation = nodeLocation;
-    }
-
-    public boolean isLocationIpv6Ready() {
-        return locationIpv6Ready;
-    }
-
-    public void setLocationIpv6Ready(boolean locationIpv6Ready) {
-        this.locationIpv6Ready = locationIpv6Ready;
-    }
-
-    public String getPlan() {
-        return plan;
-    }
-
-    public void setPlan(String plan) {
-        this.plan = plan;
     }
 
     public long getPlanMonthlyData() {
@@ -234,28 +170,12 @@ public class BandwagonInfo implements Serializable {
         this.planSwap = planSwap;
     }
 
-    public int getPlanMaxIpv6s() {
-        return planMaxIpv6s;
-    }
-
-    public void setPlanMaxIpv6s(int planMaxIpv6s) {
-        this.planMaxIpv6s = planMaxIpv6s;
-    }
-
     public String getOs() {
         return os;
     }
 
     public void setOs(String os) {
         this.os = os;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public long getDataCounter() {
@@ -289,7 +209,7 @@ public class BandwagonInfo implements Serializable {
         return sb.toString();
     }
 
-    public void setIpAddresses(String ipAddresses) {
+    private void setIpAddresses(String ipAddresses) {
         if (ipAddresses == null || ipAddresses.isEmpty()) {
             this.ipAddresses = new String[]{};
         } else {
@@ -297,44 +217,28 @@ public class BandwagonInfo implements Serializable {
         }
     }
 
-    public boolean isRdnsApiAvailable() {
-        return rdnsApiAvailable;
+    public long getMemAvailableKB() {
+        return memAvailableKB * 1024;
     }
 
-    public void setRdnsApiAvailable(boolean rdnsApiAvailable) {
-        this.rdnsApiAvailable = rdnsApiAvailable;
+    public void setMemAvailableKB(long memAvailableKB) {
+        this.memAvailableKB = memAvailableKB;
     }
 
-    public boolean isSuspended() {
-        return suspended;
+    public long getSwapTotalKB() {
+        return swapTotalKB * 1024;
     }
 
-    public void setSuspended(boolean suspended) {
-        this.suspended = suspended;
+    public void setSwapTotalKB(long swapTotalKB) {
+        this.swapTotalKB = swapTotalKB;
     }
 
-    public long getMemAvailableB() {
-        return memAvailableB * 1024;
+    public long getSwapAvailableKB() {
+        return swapAvailableKB * 1024;
     }
 
-    public void setMemAvailableB(long memAvailableB) {
-        this.memAvailableB = memAvailableB;
-    }
-
-    public long getSwapTotalB() {
-        return swapTotalB * 1024;
-    }
-
-    public void setSwapTotalB(long swapTotalB) {
-        this.swapTotalB = swapTotalB;
-    }
-
-    public long getSwapAvailableB() {
-        return swapAvailableB * 1024;
-    }
-
-    public void setSwapAvailableB(long swapAvailableB) {
-        this.swapAvailableB = swapAvailableB;
+    public void setSwapAvailableKB(long swapAvailableKB) {
+        this.swapAvailableKB = swapAvailableKB;
     }
 
     public long getVeUsedDiskSpaceB() {

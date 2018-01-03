@@ -2,7 +2,6 @@
 <resources>
     <string name="bandwagon">Bandwagon</string>
     <string name="subway">Subway</string>
-    <string name="solid_colors">Solid colors</string>
 
     <string name="one">One</string>
     <string name="two">Two</string>
@@ -38,7 +37,6 @@
     <string name="kill">Kill</string>
     <string name="more">More</string>
     <string name="reset_root_password">Reset root password</string>
-    <string name="install_new_os">Install new OS</string>
 
     <string name="please_wait">Please wait&#8230;</string>
 

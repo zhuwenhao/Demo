@@ -147,9 +147,7 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
                             DatabaseUtils.addBandwagon(context, new Bandwagon(textTitle.getText().toString(), textVeId.getText().toString(), textApiKey.getText().toString()));
                         }
                         bandwagonList.clear();
-                        for (Bandwagon bandwagon : DatabaseUtils.getBandwagonList(context)) {
-                            bandwagonList.add(bandwagon);
-                        }
+                        bandwagonList.addAll(DatabaseUtils.getBandwagonList(context));
                         updatePosition();
                         adapter.notifyDataSetChanged();
                     }
@@ -157,11 +155,11 @@ public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwi
 
         positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
         if (dialog.getCustomView() != null) //Disable inspection
-            textTitle = (AutoCompleteTextView) dialog.getCustomView().findViewById(R.id.dialog_text_title);
+            textTitle = dialog.getCustomView().findViewById(R.id.dialog_text_title);
         textTitle.addTextChangedListener(this);
-        textVeId = (AutoCompleteTextView) dialog.getCustomView().findViewById(R.id.dialog_text_ve_id);
+        textVeId = dialog.getCustomView().findViewById(R.id.dialog_text_ve_id);
         textVeId.addTextChangedListener(this);
-        textApiKey = (AutoCompleteTextView) dialog.getCustomView().findViewById(R.id.dialog_text_api_key);
+        textApiKey = dialog.getCustomView().findViewById(R.id.dialog_text_api_key);
         textApiKey.addTextChangedListener(this);
         if (isEdit) {
             textTitle.setText(bandwagonList.get(position).getTitle());
