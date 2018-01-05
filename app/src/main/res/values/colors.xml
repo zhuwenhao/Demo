@@ -7,4 +7,12 @@
     <color name="listDivider">#EEEEEE</color>
 
     <color name="bgShortcut">#F5F5F5</color>
+
+    <color name="Mon">#0047AB</color>
+    <color name="Tue">#996B1F</color>
+    <color name="Wed">#228B22</color>
+    <color name="Thu">#FF8000</color>
+    <color name="Fri">#000000</color>
+    <color name="Sat">#6633CC</color>
+    <color name="Sun">#DE3163</color>
 </resources>

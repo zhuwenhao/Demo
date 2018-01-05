@@ -112,6 +112,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_nfc:
                 startActivity(new Intent(this, NfcActivity.class));
                 break;
+            case R.id.nav_days_matter:
+                startActivity(new Intent(this, DaysMatterActivity.class));
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

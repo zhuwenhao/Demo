@@ -2,6 +2,7 @@
 <resources>
     <string name="bandwagon">Bandwagon</string>
     <string name="subway">Subway</string>
+    <string name="days_matter">Days Matter</string>
 
     <string name="one">One</string>
     <string name="two">Two</string>
@@ -65,4 +66,11 @@
     <string name="disconnected">Disconnected</string>
     <string name="other">Other</string>
     <string name="mac_address">MAC address</string>
+
+    <string name="add">Add</string>
+    <string name="days">DAYS</string>
+    <string name="someday">Someday</string>
+    <string name="till">Till %s</string>
+    <string name="is_today">%s is Today</string>
+    <string name="already">%s Already</string>
 </resources>

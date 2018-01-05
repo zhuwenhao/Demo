@@ -9,6 +9,7 @@
     <string name="bandwagon">搬瓦工</string>
     <string name="subway">地铁图</string>
     <string name="nfc">NFC</string>
+    <string name="days_matter">倒数日</string>
 
     <string name="one">One</string>
     <string name="two">Two</string>
@@ -75,4 +76,11 @@
     <string name="other">其他</string>
     <string name="ssid">SSID</string>
     <string name="mac_address">MAC地址</string>
+
+    <string name="add">添加</string>
+    <string name="days">天</string>
+    <string name="someday">某天</string>
+    <string name="till">%s还有</string>
+    <string name="is_today">%s就是今天</string>
+    <string name="already">%s已经</string>
 </resources>

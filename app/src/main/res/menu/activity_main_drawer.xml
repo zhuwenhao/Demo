@@ -17,5 +17,10 @@
             android:id="@+id/nav_nfc"
             android:icon="@drawable/ic_nfc"
             android:title="@string/nfc" />
+
+        <item
+            android:id="@+id/nav_days_matter"
+            android:icon="@drawable/ic_hourglass"
+            android:title="@string/days_matter" />
     </group>
 </menu>

@@ -101,4 +101,8 @@ public class ChineseCalendar {
     public void setLunarDayText(String lunarDayText) {
         this.lunarDayText = lunarDayText;
     }
+
+    public String getLunarText() {
+        return lunarYearGanZhi + "(" + lunarYear + ") " + lunarMonthText + " " + lunarDayText;
+    }
 }
