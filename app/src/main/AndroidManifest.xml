@@ -33,7 +33,12 @@
         <activity
             android:name=".BandwagonActivity"
             android:label="@string/bandwagon"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".BandwagonDetailActivity"
             android:label="@string/bandwagon"
