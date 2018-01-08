@@ -52,7 +52,12 @@
             android:name=".DaysMatterActivity"
             android:label="@string/days_matter"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar.StatusBar" />
+            android:theme="@style/AppTheme.NoActionBar.StatusBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
