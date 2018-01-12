@@ -1,11 +1,6 @@
 <resources>
     <string name="app_name">Demo</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="email">zhuwenhaox@gmail.com</string>
-
     <string name="bandwagon">搬瓦工</string>
     <string name="subway">地铁图</string>
     <string name="nfc">NFC</string>
@@ -67,9 +62,12 @@
     <string name="api_level">API 级别</string>
     <string name="screen_info">屏幕信息</string>
     <string name="resolution">分辨率</string>
+    <string name="resolution_value">%d x %d px</string>
     <string name="available_resolution">可用分辨率</string>
     <string name="density">密度</string>
+    <string name="density_value">%d dp</string>
     <string name="exact_density">精确密度</string>
+    <string name="exact_density_value">%s x %s dp</string>
     <string name="network_info">网络信息</string>
     <string name="network_type">网络类型</string>
     <string name="disconnected">已断开</string>

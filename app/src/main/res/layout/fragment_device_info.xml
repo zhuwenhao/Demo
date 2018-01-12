@@ -27,7 +27,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_model"
+                android:id="@+id/textModel"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
@@ -42,7 +42,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_manufacturer"
+                android:id="@+id/textManufacturer"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
@@ -57,7 +57,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_board"
+                android:id="@+id/textBoard"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
@@ -72,7 +72,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_device"
+                android:id="@+id/textDevice"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
@@ -87,7 +87,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_product"
+                android:id="@+id/textProduct"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
@@ -111,7 +111,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_android_version"
+                android:id="@+id/textAndroidVersion"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
@@ -126,7 +126,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_code_name"
+                android:id="@+id/textCodeName"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
@@ -141,7 +141,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_api_level"
+                android:id="@+id/textApiLevel"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
@@ -165,7 +165,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_resolution"
+                android:id="@+id/textResolution"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
@@ -180,7 +180,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_available_resolution"
+                android:id="@+id/textAvailableResolution"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
@@ -195,7 +195,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_density"
+                android:id="@+id/textDensity"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
@@ -210,7 +210,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_exact_density"
+                android:id="@+id/textExactDensity"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
@@ -234,13 +234,13 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_network_type"
+                android:id="@+id/textNetworkType"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
 
         <TableRow
-            android:id="@+id/row_ssid"
+            android:id="@+id/rowSSID"
             android:layout_marginTop="8dp">
 
             <TextView
@@ -251,13 +251,13 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_ssid"
+                android:id="@+id/textSSID"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
 
         <TableRow
-            android:id="@+id/row_ip_address"
+            android:id="@+id/rowIpAddress"
             android:layout_marginTop="8dp">
 
             <TextView
@@ -268,13 +268,13 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_ip_address"
+                android:id="@+id/textIpAddress"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
 
         <TableRow
-            android:id="@+id/row_mac_address"
+            android:id="@+id/rowMacAddress"
             android:layout_marginTop="8dp">
 
             <TextView
@@ -285,7 +285,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/text_mac_address"
+                android:id="@+id/textMacAddress"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
         </TableRow>
