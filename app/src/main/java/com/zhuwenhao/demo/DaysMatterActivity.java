@@ -7,24 +7,21 @@ import android.support.v4.content.pm.ShortcutInfoCompat;
 import android.support.v4.content.pm.ShortcutManagerCompat;
 import android.support.v4.graphics.drawable.IconCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.github.magiepooh.recycleritemdecoration.ItemDecorations;
 import com.zhuwenhao.demo.adapter.DaysMatterAdapter;
 import com.zhuwenhao.demo.custom.MultipleStatusView;
 import com.zhuwenhao.demo.entity.DaysMatter;
 import com.zhuwenhao.demo.listener.OnItemClickListener;
+import com.zhuwenhao.demo.ui.activities.base.BaseSubActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,19 +36,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class DaysMatterActivity extends AppCompatActivity {
+public class DaysMatterActivity extends BaseSubActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @BindView(R.id.img_top)
-    ImageView imgTop;
-
     @BindView(R.id.layout_text)
     LinearLayout layoutText;
-
-    @BindView(R.id.text_title)
-    TextView textTitle;
 
     @BindView(R.id.text_days)
     TextView textDays;
@@ -109,8 +100,6 @@ public class DaysMatterActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         context = DaysMatterActivity.this;
-
-        Glide.with(this).load(R.drawable.bg_days_matter).apply(RequestOptions.centerCropTransform()).into(imgTop);
 
         multipleStatusView.setOnRetryClickListener(new View.OnClickListener() {
             @Override
@@ -173,10 +162,10 @@ public class DaysMatterActivity extends AppCompatActivity {
                             swipeRefreshLayout.setRefreshing(false);
 
                         if (daysMatterList.size() == 0) {
-                            layoutText.setVisibility(View.GONE);
+                            layoutText.setVisibility(View.INVISIBLE);
                             multipleStatusView.showEmpty();
                         } else {
-                            textTitle.setText(daysMatterList.get(position).getTitle(context));
+                            toolbar.setTitle(daysMatterList.get(position).getTitle(context));
                             textDays.setText(String.valueOf(daysMatterList.get(position).getDays()));
                             textTargetDate.setText(daysMatterList.get(position).getTargetDateText());
                             textWeek.setText(daysMatterList.get(position).getTargetDate().dayOfWeek().getAsShortText());

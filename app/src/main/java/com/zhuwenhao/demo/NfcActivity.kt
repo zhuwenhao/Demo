@@ -1,11 +1,11 @@
 package com.zhuwenhao.demo
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import com.zhuwenhao.demo.ui.activities.base.BaseSubActivity
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
-class NfcActivity : AppCompatActivity() {
+class NfcActivity : BaseSubActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

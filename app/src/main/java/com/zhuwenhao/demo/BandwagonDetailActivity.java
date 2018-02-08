@@ -3,7 +3,6 @@ package com.zhuwenhao.demo;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +14,7 @@ import com.google.gson.Gson;
 import com.zhuwenhao.demo.custom.MultipleStatusView;
 import com.zhuwenhao.demo.entity.Bandwagon;
 import com.zhuwenhao.demo.entity.BandwagonInfo;
+import com.zhuwenhao.demo.ui.activities.base.BaseSubActivity;
 import com.zhuwenhao.demo.utils.AppUtils;
 import com.zhuwenhao.demo.utils.Constants;
 import com.zhuwenhao.demo.utils.DatabaseUtils;
@@ -29,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 
-public class BandwagonDetailActivity extends AppCompatActivity {
+public class BandwagonDetailActivity extends BaseSubActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;

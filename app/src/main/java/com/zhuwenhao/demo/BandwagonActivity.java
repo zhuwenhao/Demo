@@ -10,7 +10,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.pm.ShortcutInfoCompat;
 import android.support.v4.content.pm.ShortcutManagerCompat;
 import android.support.v4.graphics.drawable.IconCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -31,6 +30,7 @@ import com.zhuwenhao.demo.entity.Bandwagon;
 import com.zhuwenhao.demo.listener.OnItemClickListener;
 import com.zhuwenhao.demo.listener.OnItemEditClickListener;
 import com.zhuwenhao.demo.listener.OnMoveAndSwipedListener;
+import com.zhuwenhao.demo.ui.activities.base.BaseSubActivity;
 import com.zhuwenhao.demo.utils.Constants;
 import com.zhuwenhao.demo.utils.DatabaseUtils;
 import com.zhuwenhao.demo.utils.ItemTouchHelperCallback;
@@ -44,7 +44,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class BandwagonActivity extends AppCompatActivity implements OnMoveAndSwipedListener, TextWatcher {
+public class BandwagonActivity extends BaseSubActivity implements OnMoveAndSwipedListener, TextWatcher {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
