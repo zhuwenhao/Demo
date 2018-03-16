@@ -5,6 +5,7 @@
     <string name="subway">地铁图</string>
     <string name="nfc">NFC</string>
     <string name="days_matter">倒数日</string>
+    <string name="settings">设置</string>
 
     <string name="one">One</string>
     <string name="two">Two</string>
@@ -81,4 +82,13 @@
     <string name="till">%s还有</string>
     <string name="is_today">%s就是今天</string>
     <string name="already">%s已经</string>
+
+    <string name="beijing">北京</string>
+    <string name="shanghai">上海</string>
+    <string name="guangzhou">广州</string>
+    <string name="shenzhen">深圳</string>
+    <string name="wuhan">武汉</string>
+    <string name="tianjin">天津</string>
+    <string name="nanjing">南京</string>
+    <string name="xianggang">香港</string>
 </resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="地铁图">
+
+        <ListPreference
+            android:entries="@array/city_entry"
+            android:entryValues="@array/city_value"
+            android:summary="上海"
+            android:title="默认城市" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="关于">
+
+        <Preference android:title="应用信息" />
+
+        <Preference android:title="开源许可" />
+    </PreferenceCategory>
+</PreferenceScreen>

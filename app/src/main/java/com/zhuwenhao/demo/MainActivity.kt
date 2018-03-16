@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
         private const val DRAWER_SUBWAY = 2L
         private const val DRAWER_NFC = 3L
         private const val DRAWER_DAYS_MATTER = 4L
+        private const val DRAWER_SETTINGS = 5L
     }
 
     private lateinit var drawer: Drawer
@@ -86,6 +87,14 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
                                 .withIdentifier(DRAWER_DAYS_MATTER)
                                 .withName(R.string.days_matter)
                                 .withIcon(AppCompatResources.getDrawable(this, R.drawable.ic_hourglass))
+                                .withIconTintingEnabled(true)
+                                .withSelectable(false)
+                )
+                .addStickyDrawerItems(
+                        PrimaryDrawerItem()
+                                .withIdentifier(DRAWER_SETTINGS)
+                                .withName(R.string.settings)
+                                .withIcon(AppCompatResources.getDrawable(this, R.drawable.ic_settings))
                                 .withIconTintingEnabled(true)
                                 .withSelectable(false)
                 )
