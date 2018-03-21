@@ -17,12 +17,16 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.zhuwenhao.demo.ui.activities.base.BaseSubActivity
+import com.zhuwenhao.demo.utils.AppUtils
+import com.zhuwenhao.demo.utils.Constants
 import kotlinx.android.synthetic.main.activity_web.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class WebActivity : BaseSubActivity() {
 
     var url: String? = null
+
+    private var onceBack: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,14 +66,21 @@ class WebActivity : BaseSubActivity() {
             }
         }
         web_view.setOnKeyListener { _, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_BACK && web_view.canGoBack()) {
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_BACK && web_view.canGoBack() && !onceBack) {
                 web_view.goBack()
                 true
             } else
                 false
         }
 
-        web_view.loadUrl(intent.dataString)
+        if (intent.dataString == Constants.SUBWAY_URL) {
+            url = intent.dataString + AppUtils.getDefaultPref(this, "default_city", Constants.SUBWAY_DEFAULT_CITY)
+            onceBack = true
+        } else {
+            url = intent.dataString
+        }
+
+        web_view.loadUrl(url)
     }
 
     override fun onDestroy() {

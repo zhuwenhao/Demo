@@ -83,6 +83,7 @@
     <string name="is_today">%s就是今天</string>
     <string name="already">%s已经</string>
 
+    <string name="default_city">默认城市</string>
     <string name="beijing">北京</string>
     <string name="shanghai">上海</string>
     <string name="guangzhou">广州</string>
@@ -90,5 +91,29 @@
     <string name="wuhan">武汉</string>
     <string name="tianjin">天津</string>
     <string name="nanjing">南京</string>
-    <string name="xianggang">香港</string>
+    <string name="hongkong">香港</string>
+    <string name="chongqing">重庆</string>
+    <string name="hangzhou">杭州</string>
+    <string name="shenyang">沈阳</string>
+    <string name="dalian">大连</string>
+    <string name="chengdu">成都</string>
+    <string name="changchun">长春</string>
+    <string name="suzhou">苏州</string>
+    <string name="foshan">佛山</string>
+    <string name="kunming">昆明</string>
+    <string name="xian">西安</string>
+    <string name="zhengzhou">郑州</string>
+    <string name="harbin">哈尔滨</string>
+    <string name="changsha">长沙</string>
+    <string name="ningbo">宁波</string>
+    <string name="wuxi">无锡</string>
+    <string name="qingdao">青岛</string>
+    <string name="nanchang">南昌</string>
+    <string name="fuzhou">福州</string>
+    <string name="dongguan">东莞</string>
+    <string name="nanning">南宁</string>
+    <string name="hefei">合肥</string>
+    <string name="shijiazhuang">石家庄</string>
+    <string name="guiyang">贵阳</string>
+    <string name="xiamen">厦门</string>
 </resources>

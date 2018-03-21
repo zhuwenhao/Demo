@@ -8,31 +8,31 @@
         <item>@string/wuhan</item>
         <item>@string/tianjin</item>
         <item>@string/nanjing</item>
-        <item>@string/xianggang</item>
-        <item>重庆</item>
-        <item>杭州</item>
-        <item>沈阳</item>
-        <item>大连</item>
-        <item>成都</item>
-        <item>长春</item>
-        <item>苏州</item>
-        <item>佛山</item>
-        <item>昆明</item>
-        <item>西安</item>
-        <item>郑州</item>
-        <item>哈尔滨</item>
-        <item>长沙</item>
-        <item>宁波</item>
-        <item>无锡</item>
-        <item>青岛</item>
-        <item>南昌</item>
-        <item>福州</item>
-        <item>东莞</item>
-        <item>南宁</item>
-        <item>合肥</item>
-        <item>石家庄</item>
-        <item>贵阳</item>
-        <item>厦门</item>
+        <item>@string/hongkong</item>
+        <item>@string/chongqing</item>
+        <item>@string/hangzhou</item>
+        <item>@string/shenyang</item>
+        <item>@string/dalian</item>
+        <item>@string/chengdu</item>
+        <item>@string/changchun</item>
+        <item>@string/suzhou</item>
+        <item>@string/foshan</item>
+        <item>@string/kunming</item>
+        <item>@string/xian</item>
+        <item>@string/zhengzhou</item>
+        <item>@string/harbin</item>
+        <item>@string/changsha</item>
+        <item>@string/ningbo</item>
+        <item>@string/wuxi</item>
+        <item>@string/qingdao</item>
+        <item>@string/nanchang</item>
+        <item>@string/fuzhou</item>
+        <item>@string/dongguan</item>
+        <item>@string/nanning</item>
+        <item>@string/hefei</item>
+        <item>@string/shijiazhuang</item>
+        <item>@string/guiyang</item>
+        <item>@string/xiamen</item>
     </string-array>
 
     <string-array name="city_value">

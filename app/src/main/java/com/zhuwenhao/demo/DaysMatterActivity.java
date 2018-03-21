@@ -1,11 +1,7 @@
 package com.zhuwenhao.demo;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.pm.ShortcutInfoCompat;
-import android.support.v4.content.pm.ShortcutManagerCompat;
-import android.support.v4.graphics.drawable.IconCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -78,20 +74,9 @@ public class DaysMatterActivity extends BaseSubActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getIntent().getAction() != null && getIntent().getAction().equals(Intent.ACTION_CREATE_SHORTCUT)) { //创建快捷方式
-            setResult(RESULT_OK, ShortcutManagerCompat.createShortcutResultIntent(this,
-                    new ShortcutInfoCompat.Builder(this, "DaysMatter")
-                            .setIntent(new Intent(this, DaysMatterActivity.class).setAction(Intent.ACTION_VIEW))
-                            .setIcon(IconCompat.createWithResource(this, R.drawable.ic_hourglass_shortcut))
-                            .setLongLabel(getString(R.string.days_matter))
-                            .setShortLabel(getString(R.string.days_matter))
-                            .build()));
-            finish();
-        } else {
-            setContentView(R.layout.activity_days_matter);
-            ButterKnife.bind(this);
-            initView();
-        }
+        setContentView(R.layout.activity_days_matter);
+        ButterKnife.bind(this);
+        initView();
     }
 
     private void initView() {

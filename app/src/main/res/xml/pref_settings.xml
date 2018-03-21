@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="地铁图">
+    <PreferenceCategory android:title="@string/subway">
 
-        <ListPreference
+        <SimpleMenuPreference
+            android:defaultValue="3100"
             android:entries="@array/city_entry"
             android:entryValues="@array/city_value"
-            android:summary="上海"
-            android:title="默认城市" />
+            android:key="default_city"
+            android:summary="%s"
+            android:title="@string/default_city" />
     </PreferenceCategory>
-
-    <PreferenceCategory android:title="关于">
-
-        <Preference android:title="应用信息" />
-
-        <Preference android:title="开源许可" />
-    </PreferenceCategory>
-</PreferenceScreen>
+</android.support.v7.preference.PreferenceScreen>

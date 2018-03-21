@@ -16,6 +16,7 @@ import com.zhuwenhao.demo.adapter.ViewPagerAdapter
 import com.zhuwenhao.demo.fragment.DeviceInfoFragment
 import com.zhuwenhao.demo.fragment.Fragment1
 import com.zhuwenhao.demo.fragment.Fragment2
+import com.zhuwenhao.demo.settings.SettingsActivity
 import com.zhuwenhao.demo.utils.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -108,11 +109,12 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
             DRAWER_BANDWAGON -> startActivity(Intent(this, BandwagonActivity::class.java))
             DRAWER_SUBWAY -> {
                 val intent = Intent(this, WebActivity::class.java)
-                intent.data = Uri.parse(Constants.SUBWAY_URL_DEFAULT)
+                intent.data = Uri.parse(Constants.SUBWAY_URL)
                 startActivity(intent)
             }
             DRAWER_NFC -> startActivity(Intent(this, NfcActivity::class.java))
             DRAWER_DAYS_MATTER -> startActivity(Intent(this, DaysMatterActivity::class.java))
+            DRAWER_SETTINGS -> startActivity(Intent(this, SettingsActivity::class.java))
         }
         Handler().post { drawer.closeDrawer() }
         return false

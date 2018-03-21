@@ -1,6 +1,8 @@
 package com.zhuwenhao.demo.utils;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.support.v7.preference.PreferenceManagerFix;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
@@ -71,5 +73,29 @@ public class AppUtils {
         } else {
             return format.format(b / 1024).replace(".00", "") + "GB";
         }
+    }
+
+    /**
+     * getDefaultSharedPreferences value
+     *
+     * @param context context
+     * @param key     key
+     * @return value
+     */
+    public static String getDefaultPref(Context context, String key) {
+        return getDefaultPref(context, key, null);
+    }
+
+    /**
+     * getDefaultSharedPreferences value
+     *
+     * @param context  context
+     * @param key      key
+     * @param defValue defValue
+     * @return value
+     */
+    public static String getDefaultPref(Context context, String key, String defValue) {
+        SharedPreferences preferences = PreferenceManagerFix.getDefaultSharedPreferences(context);
+        return preferences.getString(key, defValue);
     }
 }

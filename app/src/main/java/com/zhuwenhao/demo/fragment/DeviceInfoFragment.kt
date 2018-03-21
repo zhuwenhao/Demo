@@ -16,11 +16,11 @@ import java.text.DecimalFormat
 
 class DeviceInfoFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_device_info, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_device_info, container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
     }
@@ -37,9 +37,9 @@ class DeviceInfoFragment : Fragment() {
         textApiLevel.text = Build.VERSION.SDK_INT.toString()
 
         val dm = DisplayMetrics()
-        activity.windowManager.defaultDisplay.getRealMetrics(dm)
+        activity!!.windowManager.defaultDisplay.getRealMetrics(dm)
         textResolution.text = getString(R.string.resolution_value, dm.widthPixels, dm.heightPixels)
-        activity.windowManager.defaultDisplay.getMetrics(dm)
+        activity!!.windowManager.defaultDisplay.getMetrics(dm)
         textAvailableResolution.text = getString(R.string.resolution_value, dm.widthPixels, dm.heightPixels)
         textDensity.text = getString(R.string.density_value, dm.densityDpi)
         textExactDensity.text = getString(R.string.exact_density_value, DecimalFormat("0.000").format(dm.xdpi), DecimalFormat("0.000").format(dm.ydpi))
@@ -53,7 +53,7 @@ class DeviceInfoFragment : Fragment() {
                 rowMacAddress.visibility = View.GONE
             }
             NetworkUtils.TYPE_WIFI -> {
-                val wifiInfo = (activity.getSystemService(Context.WIFI_SERVICE) as WifiManager).connectionInfo
+                val wifiInfo = (activity!!.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager).connectionInfo
                 textSSID.text = wifiInfo.ssid.replace("\"", "")
                 textIpAddress.text = NetworkUtils.formatIpAddress(wifiInfo.ipAddress) //NetworkUtils.getIpAddress() 效果一样
                 textMacAddress.text = NetworkUtils.getMacAddress()
