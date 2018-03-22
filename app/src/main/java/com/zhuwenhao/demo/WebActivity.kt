@@ -26,8 +26,6 @@ class WebActivity : BaseSubActivity() {
 
     var url: String? = null
 
-    private var onceBack: Boolean = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
@@ -66,19 +64,17 @@ class WebActivity : BaseSubActivity() {
             }
         }
         web_view.setOnKeyListener { _, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_BACK && web_view.canGoBack() && !onceBack) {
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_BACK && web_view.canGoBack()) {
                 web_view.goBack()
                 true
             } else
                 false
         }
 
-        if (intent.dataString == Constants.SUBWAY_URL) {
-            url = intent.dataString + AppUtils.getDefaultPref(this, "default_city", Constants.SUBWAY_DEFAULT_CITY)
-            onceBack = true
-        } else {
-            url = intent.dataString
-        }
+        url = if (intent.dataString == Constants.SUBWAY_URL)
+            intent.dataString + AppUtils.getDefaultPref(this, "default_city", Constants.SUBWAY_DEFAULT_CITY)
+        else
+            intent.dataString
 
         web_view.loadUrl(url)
     }
