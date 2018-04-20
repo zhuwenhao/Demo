@@ -1,7 +1,11 @@
 package com.zhuwenhao.demo
 
 import android.content.Intent
+import android.content.pm.ShortcutInfo
+import android.content.pm.ShortcutManager
+import android.graphics.drawable.Icon
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
@@ -19,15 +23,15 @@ import com.zhuwenhao.demo.fragment.Fragment2
 import com.zhuwenhao.demo.settings.SettingsActivity
 import com.zhuwenhao.demo.utils.Constants
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
 
     companion object {
         private const val DRAWER_BANDWAGON = 1L
         private const val DRAWER_SUBWAY = 2L
-        private const val DRAWER_NFC = 3L
-        private const val DRAWER_DAYS_MATTER = 4L
-        private const val DRAWER_SETTINGS = 5L
+        private const val DRAWER_DAYS_MATTER = 3L
+        private const val DRAWER_SETTINGS = 4L
     }
 
     private lateinit var drawer: Drawer
@@ -36,6 +40,7 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initView()
+        createDynamicShortcuts()
     }
 
     private fun initView() {
@@ -79,12 +84,6 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
                                 .withIconTintingEnabled(true)
                                 .withSelectable(false),
                         PrimaryDrawerItem()
-                                .withIdentifier(DRAWER_NFC)
-                                .withName(R.string.nfc)
-                                .withIcon(AppCompatResources.getDrawable(this, R.drawable.ic_nfc))
-                                .withIconTintingEnabled(true)
-                                .withSelectable(false),
-                        PrimaryDrawerItem()
                                 .withIdentifier(DRAWER_DAYS_MATTER)
                                 .withName(R.string.days_matter)
                                 .withIcon(AppCompatResources.getDrawable(this, R.drawable.ic_hourglass))
@@ -112,12 +111,44 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
                 intent.data = Uri.parse(Constants.SUBWAY_URL)
                 startActivity(intent)
             }
-            DRAWER_NFC -> startActivity(Intent(this, NfcActivity::class.java))
             DRAWER_DAYS_MATTER -> startActivity(Intent(this, DaysMatterActivity::class.java))
             DRAWER_SETTINGS -> startActivity(Intent(this, SettingsActivity::class.java))
         }
         Handler().post { drawer.closeDrawer() }
         return false
+    }
+
+    private fun createDynamicShortcuts() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N_MR1)
+            return
+
+        val shortcutManager = getSystemService(ShortcutManager::class.java)
+
+        val bandwagon = ShortcutInfo.Builder(this, "bandwagon")
+                .setIcon(Icon.createWithResource(this, R.drawable.ic_computer_shortcut))
+                .setDisabledMessage(getString(R.string.bandwagon))
+                .setLongLabel(getString(R.string.bandwagon))
+                .setShortLabel(getString(R.string.bandwagon))
+                .setIntent(Intent(Intent.ACTION_VIEW, Uri.EMPTY, this, BandwagonActivity::class.java)
+                        .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
+                .build()
+        val subway = ShortcutInfo.Builder(this, "subway")
+                .setIcon(Icon.createWithResource(this, R.drawable.ic_subway_shortcut))
+                .setDisabledMessage(getString(R.string.subway))
+                .setLongLabel(getString(R.string.subway))
+                .setShortLabel(getString(R.string.subway))
+                .setIntent(Intent(Intent.ACTION_VIEW, Uri.parse(Constants.SUBWAY_URL), this, WebActivity::class.java)
+                        .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
+                .build()
+        val daysMatter = ShortcutInfo.Builder(this, "days_matter")
+                .setIcon(Icon.createWithResource(this, R.drawable.ic_hourglass_shortcut))
+                .setDisabledMessage(getString(R.string.days_matter))
+                .setLongLabel(getString(R.string.days_matter))
+                .setShortLabel(getString(R.string.days_matter))
+                .setIntent(Intent(Intent.ACTION_VIEW, Uri.EMPTY, this, DaysMatterActivity::class.java)
+                        .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
+                .build()
+        shortcutManager.dynamicShortcuts = Arrays.asList(bandwagon, subway, daysMatter)
     }
 
     override fun onBackPressed() {
