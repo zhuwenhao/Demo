@@ -6,8 +6,8 @@
     <string name="days_matter">倒数日</string>
     <string name="settings">设置</string>
 
-    <string name="one">One</string>
-    <string name="two">Two</string>
+    <string name="in_theaters">正在热映</string>
+    <string name="movie_coming_soon">即将上映</string>
     <string name="device_info">设备信息</string>
 
     <string name="empty">这里空空的</string>
@@ -115,4 +115,9 @@
     <string name="shijiazhuang">石家庄</string>
     <string name="guiyang">贵阳</string>
     <string name="xiamen">厦门</string>
+
+    <string name="douban_rating">豆瓣评分</string>
+    <string name="no_rating">暂无评分</string>
+    <string name="item_directors">导演：%s</string>
+    <string name="item_casts">演员：</string>
 </resources>

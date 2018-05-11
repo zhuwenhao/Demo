@@ -18,8 +18,8 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.zhuwenhao.demo.adapter.ViewPagerAdapter
 import com.zhuwenhao.demo.fragment.DeviceInfoFragment
-import com.zhuwenhao.demo.fragment.Fragment1
 import com.zhuwenhao.demo.fragment.Fragment2
+import com.zhuwenhao.demo.movie.InTheatersFragment
 import com.zhuwenhao.demo.settings.SettingsActivity
 import com.zhuwenhao.demo.utils.Constants
 import kotlinx.android.synthetic.main.activity_main.*
@@ -47,15 +47,15 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
         setSupportActionBar(toolbar)
 
         val titles = ArrayList<String>()
-        titles.add(getString(R.string.one))
-        titles.add(getString(R.string.two))
+        titles.add(getString(R.string.in_theaters))
+        titles.add(getString(R.string.movie_coming_soon))
         titles.add(getString(R.string.device_info))
         for (title in titles) {
             tabLayout.addTab(tabLayout.newTab().setText(title))
         }
 
         val fragmentList = ArrayList<Fragment>()
-        fragmentList.add(Fragment1())
+        fragmentList.add(InTheatersFragment())
         fragmentList.add(Fragment2())
         fragmentList.add(DeviceInfoFragment())
 

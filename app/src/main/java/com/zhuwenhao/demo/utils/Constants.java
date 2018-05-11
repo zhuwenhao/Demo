@@ -9,4 +9,6 @@ public class Constants {
     public static final String SUBWAY_URL = "http://m.amap.com/subway/#city=";
 
     public static final String SUBWAY_DEFAULT_CITY = "3100";
+
+    public static final String DOUBAN_MOVIE_API = "https://api.douban.com/v2/movie/";
 }

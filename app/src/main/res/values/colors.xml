@@ -16,4 +16,6 @@
     <color name="Fri">#000000</color>
     <color name="Sat">#6633CC</color>
     <color name="Sun">#DE3163</color>
+
+    <color name="movieRating">#e09015</color>
 </resources>
